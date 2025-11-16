@@ -265,7 +265,7 @@ function AddHud() {
       .Old-Fixed-Param{
        display:flex;
        align-items:center;
-       margin-top:1.15vh
+       margin-top:.95vh
       }
       .Old-Fixed-Param.health{
         margin-top:0;

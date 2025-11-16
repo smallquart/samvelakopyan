@@ -599,26 +599,42 @@ body .info-card .text { color: #f0f0f0 !important; } /* Белый текст */
 #app .trade-items-main { right: -1.2vw; top: -2vh; }
 
 /* ---------- Чат RADMIR ---------- */
-#app .radmir-chat-input__input input::selection { background-color: rgba(240, 240, 240, 0.3); } /* Выделение текста в светлом стиле */
-#app .radmir-chat__before {
-  position: fixed;
-  width: 100vw;
-  height: 41.66vw;
-  background: none !important;
-  left: 0; top: 0; z-index: -1;
-  opacity: 0;
-  transition: all .2s ease;
-  pointer-events: none;
-}
-#app .radmir-chat-input__input {
-  background: rgba(25, 25, 25, 0.8) !important; /* Темный фон */
-  border-radius: 11px !important;
-  color: #f0f0f0 !important; /* Белый текст ввода */
-}
-#app .radmir-chat-input__input input { margin-left: .9vh !important; color: #f0f0f0 !important; } /* Белый текст ввода */
-#app .radmir-chat-input__input-lang { margin-right: 1vh !important; }
-#app .controls-button { border-radius: .5vh; }
+#app .radmir-chat-input__input input::selection { 
+    background-color: rgba(240, 240, 240, 0.3); 
+} /* Выделение текста в светлом стиле */
 
+#app .radmir-chat__before {
+    position: fixed;
+    width: 100vw;
+    height: 41.66vw;
+    background: none !important;
+    left: 0; 
+    top: 0; 
+    z-index: -1;
+    opacity: 0;
+    transition: all .2s ease;
+    pointer-events: none;
+}
+
+#app .radmir-chat-input__input {
+    background: rgba(0, 0, 0, 1) !important; /* Темный фон */
+    border-radius: 4px !important; /* Более острые углы */
+    color: #f0f0f0 !important; /* Белый текст ввода */
+    border: 1px solid #ffffff !important; /* Белая обводка */
+}
+
+#app .radmir-chat-input__input input { 
+    margin-left: .9vh !important; 
+    color: #f0f0f0 !important; 
+} /* Белый текст ввода */
+
+#app .radmir-chat-input__input-lang { 
+    margin-right: 1vh !important; 
+}
+
+#app .controls-button { 
+    border-radius: 2px; /* Более острые углы */
+}
 /* ---------- Модальные окна ---------- */
 #app .modal-container-wrapper {
   background: rgba(25, 25, 25, 0.85) !important; /* Темный фон */

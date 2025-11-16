@@ -265,7 +265,7 @@ function AddHud() {
       .Old-Fixed-Param{
        display:flex;
        align-items:center;
-       margin-top:1.35vh
+       margin-top:1.15vh
       }
       .Old-Fixed-Param.health{
         margin-top:0;
@@ -353,13 +353,13 @@ function AddHud() {
 .Old-Fixed-Wanted_back {
    position: absolute;
    right: -1.2vh;
-   top: 0.6vh;
+   top: 0.6vh; /* Дополнительно опущено */
    z-index: -1;
 }
 
 .Wanted_row img {
-   width: 3.0vh;
-   height: 3.0vh;
+   width: 2.0vh;
+   height: 2.0vh;
    padding: 0.15vh 0.22vh;
 }
       .Old-Fixed-HudBottom{

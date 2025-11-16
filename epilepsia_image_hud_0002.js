@@ -265,7 +265,7 @@ function AddHud() {
       .Old-Fixed-Param{
        display:flex;
        align-items:center;
-       margin-top:.95vh
+       margin-top:1.35vh
       }
       .Old-Fixed-Param.health{
         margin-top:0;
@@ -344,20 +344,22 @@ function AddHud() {
        width:1.7vh;
        height:1.7vh
       }
-.Old-Fixed-Wanted{
-   position:relative;
-   margin-right:6vh;
-   margin-top:-1.6vh
-  }
-  .Old-Fixed-Wanted_back{
-   position:absolute;
-   right:-1.2vh;
-   top:0.2vh; /* Увеличено значение top, чтобы опустить элемент */
-   z-index:-1
-  }
-  .Wanted_row img {
-   width: 3.0vh; /* Увеличен размер */
-   height: 3.0vh; /* Увеличен размер */
+.Old-Fixed-Wanted {
+   position: relative;
+   margin-right: 6vh;
+   margin-top: -1.6vh;
+}
+
+.Old-Fixed-Wanted_back {
+   position: absolute;
+   right: -1.2vh;
+   top: 0.6vh;
+   z-index: -1;
+}
+
+.Wanted_row img {
+   width: 3.0vh;
+   height: 3.0vh;
    padding: 0.15vh 0.22vh;
 }
       .Old-Fixed-HudBottom{
@@ -536,7 +538,7 @@ body .info-card .text { color: #f0f0f0 !important; } /* Белый текст */
 
 #app .radmir-chat-input__input {
     background: rgba(0, 0, 0, 1) !important; /* Темный фон */
-    border-radius: 8px !important; /* Более острые углы */
+    border-radius: 11px !important; /* Более острые углы */
     color: #f0f0f0 !important; /* Белый текст ввода */
     border: 2px solid #ffffff !important; /* Белая обводка */
 }

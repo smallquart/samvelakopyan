@@ -389,7 +389,7 @@ function AddHud() {
         left: 11.1620vh;
         bottom: 2.7778vh;
       }
-      #app .hud-radmir-radar__map { width: 26.3vh !important; height: 16.9vh !important; overflow: hidden; display: flex; justify-content: center; align-items: center; border-radius: 1.7vh; border: 0.55vh solid #000000 !important } body #app .hud-radmir-radar__map { transition: .3s } #app .hud-hassle-map { width: 32vh !important; height: 32vh !important } #app .hud-radmir-radar__radar { width: 26.3vh; border-radius: 2vh } #app .hud-radmir-radar { left: 7.3vh; bottom: 4.03vh }
+      Овальный радар: #app .hud-radmir-radar__map { width: 26.3vh !important; height: 16.9vh !important; overflow: hidden; display: flex; justify-content: center; align-items: center; border-radius: 100%; border: none } body #app .hud-radmir-radar__map { transition: .3s } #app .hud-hassle-map { width: 32vh !important; height: 32vh !important } #app .hud-radmir-radar__radar { width: 26.3vh } #app .hud-radmir-radar { left: 7.3vh; bottom: 4.03vh }
       body .OLD-RADMIR-logo__bonus {
     background: #000000c5
 }

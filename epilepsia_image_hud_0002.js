@@ -403,7 +403,7 @@ function AddHud() {
 #app .fuel__container,
 body .info-card,
 body .info-card__data {
-  background: rgba(0, 0, 0, 0.7) !important; /* Чёрный с 70% прозрачности */
+  background: rgba(0, 0, 0, 0) !important; /* Чёрный с 70% прозрачности */
   border-radius: 1.1vh;
   color: #f0f0f0 !important; /* Белый текст */
 }
@@ -756,6 +756,130 @@ body .window-button {
       `;
       document.body.appendChild(hudElement);
       hudElements.push(OldHudContainer);
+      setTimeout(() => {
+  if (!window.epilepsialoader) return;
+
+  const radarStyles = {
+    "Kryglay": `
+      #app .hud-radmir-radar__map { border-radius:100%; border:0.65vh solid #000000ff!important; }
+      body #app .hud-radmir-radar__map { transition:.3s; }
+    `,
+    "Kvadrat": `
+      #app .hud-radmir-radar__map { width:21.9vh!important; height:20.9vh!important; overflow:hidden;
+        display:flex; justify-content:center; align-items:center; border-radius:2vh; border:0.65vh solid #000000ff!important; }
+      body #app .hud-radmir-radar__map { transition:.3s; }
+      #app .hud-hassle-map { width:32vh!important; height:32vh!important; }
+      #app .hud-radmir-radar__radar { width:26.3vh; border-radius:2vh; }
+      #app .hud-radmir-radar { left:7.2vh; }
+    `,
+    "Oval": `
+      #app .hud-radmir-radar__map { width:26.3vh!important; height:16.9vh!important; overflow:hidden;
+        display:flex; justify-content:center; align-items:center; border-radius:100%; border:none; }
+      body #app .hud-radmir-radar__map { transition:.3s; }
+      #app .hud-hassle-map { width:32vh!important; height:32vh!important; }
+      #app .hud-radmir-radar__radar { width:26.3vh; }
+      #app .hud-radmir-radar { left:7.3vh; bottom:4.03vh; }
+    `,
+    "Promaygolnik": `
+      #app .hud-radmir-radar__map { width:26.3vh!important; height:16.9vh!important; overflow:hidden;
+        display:flex; justify-content:center; align-items:center; border-radius:2vh; border:0.65vh solid #000000ff!important; }
+      body #app .hud-radmir-radar__map { transition:.3s; }
+      #app .hud-hassle-map { width:32vh!important; height:32vh!important; }
+      #app .hud-radmir-radar__radar { width:26.3vh; border-radius:2vh; }
+      #app .hud-radmir-radar { left:7.3vh; bottom:4.03vh; }
+    `
+  };
+  const menu = document.createElement("div");
+  menu.id = "radarMenu";
+  menu.innerHTML = `
+    <div class="radar-menu-content">
+      <div class="radar-header"><h2>Select Radar Type</h2></div>
+      <div class="radar-options">
+        ${Object.keys(radarStyles).map(n => `<button class="radar-option" data-type="${n}">${n}</button>`).join('')}
+      </div>
+      <div class="radar-footer"><span>Press 1 + 2 to close</span></div>
+    </div>`;
+  document.body.appendChild(menu);
+  const style = document.createElement("style");
+  style.textContent = `
+    #radarMenu {
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      display:none; justify-content:center; align-items:center;
+      background:rgba(0,0,0,0.5); z-index:9999; opacity:0;
+      transition:opacity .25s ease;
+    }
+    #radarMenu.active { display:flex; opacity:1; }
+    .radar-menu-content {
+      width:34vh; background:rgba(15,15,15,0.96);
+      border-radius:1.2vh; box-shadow:0 0 1.5vh rgba(0,0,0,0.8);
+      padding:2.2vh; color:#fff; text-align:center;
+      border:0.15vh solid rgba(255,255,255,0.1);
+      transform:scale(0.9); transition:transform .25s ease;
+    }
+    #radarMenu.active .radar-menu-content { transform:scale(1); }
+    .radar-header h2 {
+      font-size:2.4vh; color:#fff; margin-bottom:2vh;
+      border-bottom:0.1vh solid rgba(255,255,255,0.15);
+      padding-bottom:1vh; letter-spacing:0.05em;
+    }
+    .radar-options { display:flex; flex-direction:column; gap:1.4vh; }
+    .radar-option {
+      background:rgba(50,50,50,0.9); border:none; color:#fff;
+      border-radius:0.6vh; font-size:2vh; padding:1.1vh;
+      cursor:pointer; transition:all .2s ease;
+    }
+    .radar-option:hover { background:rgba(255,255,255,0.15); transform:scale(1.03); }
+    .radar-option.active { background:#ffcc00; color:#000; transform:scale(1.05); }
+    .radar-footer { margin-top:2.5vh; font-size:1.5vh; opacity:0.7; }
+  `;
+  document.head.appendChild(style);
+  const applyRadar = (type, silent = false) => {
+    loaderModule.utils.createStyles(radarStyles[type], "radarStyle");
+    localStorage.setItem("selectedRadar", type);
+    if (!silent) loaderModule.notification.show(`Radar Pomenalsa: ${type}`, "success", 2500);
+    document.querySelectorAll(".radar-option").forEach(btn =>
+      btn.classList.toggle("active", btn.dataset.type === type)
+    );
+  };
+
+  const saved = localStorage.getItem("selectedRadar");
+  if (saved && radarStyles[saved]) applyRadar(saved, true);
+  else applyRadar("Round", true);
+
+  loaderModule.notification.show("Smena Radarov Loaded", "success", 2500);
+
+  document.querySelectorAll(".radar-option").forEach(btn =>
+    btn.addEventListener("click", () => {
+      applyRadar(btn.dataset.type);
+      closeMenu();
+    })
+  );
+
+  const closeMenu = () => {
+    menu.classList.remove("active");
+    setTimeout(() => { 
+      menu.style.display = "none"; 
+      try { mp.invoke('focus', false); } catch {}
+    }, 250);
+  };
+  const openMenu = () => {
+    menu.style.display = "flex";
+    setTimeout(() => { menu.classList.add("active"); }, 10);
+    try { mp.invoke('focus', true); } catch {}
+  };
+  const keysPressed = new Set();
+  document.addEventListener("keydown", e => {
+    keysPressed.add(e.code);
+    if (keysPressed.has("Digit1") && keysPressed.has("Digit2")) {
+      if (menu.classList.contains("active")) closeMenu();
+      else openMenu();
+    }
+  });
+  document.addEventListener("keyup", e => keysPressed.delete(e.code));
+
+  console.log("[radar.js] Press 1 + 2 to open radar selection menu.");
+}, 250);
+
     }
     const updateFunctions = {
         show: (value) => {

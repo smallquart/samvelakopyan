@@ -644,7 +644,7 @@ body .window-button {
   background: rgba(0, 0, 0, 0.9) !important; /* Чёрный заполнитель полосы */
 }
   #app .capture-table {
-    background: #00000086;
+    background: #20202050;
     box-shadow: 0 0 5vh 0 #00000044;
     border-radius: 1vh;
     transform: scale(.9);

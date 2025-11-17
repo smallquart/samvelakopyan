@@ -353,7 +353,7 @@ function AddHud() {
 .Old-Fixed-Wanted_back {
    position: absolute;
    right: -1.2vh;
-   top: 0.6vh; /* Дополнительно опущено */
+   top: 1.83vh; /* Дополнительно опущено */
    z-index: -1;
 }
 

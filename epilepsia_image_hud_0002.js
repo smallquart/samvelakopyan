@@ -403,8 +403,8 @@ function AddHud() {
 #app .fuel__container,
 body .info-card,
 body .info-card__data {
-  background: rgba(0, 0, 0, 0) !important; /* Чёрный с 70% прозрачности */
-  border-radius: 1.1vh;
+  background: rgba(0, 0, 0, 0.8) !important; /* Чёрный с 70% прозрачности */
+  border-radius: 1.3vh;
   color: #f0f0f0 !important; /* Белый текст */
 }
 

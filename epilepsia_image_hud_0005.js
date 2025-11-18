@@ -896,7 +896,7 @@ body .window-button {
             }
         },*/
         greenZone: (isVisible) => {
-            const greenZoneEl = document.querySelector(".Old-Fixed-ZZ");
+            const greenZoneEl = document.querySelector(".Old-Fixed-Freeze");
             if (greenZoneEl) {
                 greenZoneEl.style.display = isVisible ? "" : "none";
             }
@@ -939,6 +939,8 @@ body .window-button {
             } else {
                 icon.classList.remove("wanted-active");
                 icon.classList.add("wanted-innactive");
+                loaderModule.game.chat.sendInput("/hudscalefix");
+        loaderModule.notification.show(window.loaderModuleScriptName, "", 2500);
             }
         });
     }
@@ -975,6 +977,7 @@ body .window-button {
             }
         }, 100);
     }
+    
     initializeHudProxy();
     createHud();
     window.onInfoChange = onInfoChange;

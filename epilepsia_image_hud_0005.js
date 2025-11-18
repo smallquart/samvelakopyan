@@ -403,21 +403,21 @@ function AddHud() {
 #app .fuel__container,
 body .info-card,
 body .info-card__data {
-  background: rgba(0, 0, 0, 0.7) !important; /* Чёрный с 70% прозрачности */
+  background: rgba(255, 255, 255, 0.6) !important; /* Белый с 60% прозрачности */
   border-radius: 1.1vh;
-  color: #f0f0f0 !important; /* Белый текст */
+  color: #000000 !important; /* Черный текст */
 }
 
 /* ---------- Топливное меню ---------- */
 #app .fuel__button .text:before {
-  background: url("image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTEuNDUxIDFMNC40ODQgNy44NDhMMSA0LjQyNCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==") center/contain no-repeat !important;
+  background: url("image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTEuNDUxIDFMNC40ODQgNy44NDhMMSA0LjQyNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==") center/contain no-repeat !important; /* Изменен цвет иконки на черный */
 }
 #app .fuel__container:before { opacity: 0; }
 #app .fuel__container { padding: 3.33vh 2.96vh; }
 #app .fuel__title {
   font-size: 2.04vh;
   line-height: 1.94vh;
-  color: #f0f0f0 !important; /* Белый текст */
+  color: #000000 !important; /* Черный текст */
   text-align: left;
 }
 #app .fuel__close {
@@ -429,28 +429,28 @@ body .info-card__data {
   gap: .5vh;
 }
 #app .fuel__close:hover img {
-  filter: drop-shadow(0 0 8px #ffffff80) !important; /* Светлая тень */
+  filter: drop-shadow(0 0 8px #00000080) !important; /* Темная тень при наведении */
 }
 #app .fuel__fill .range-slider-fill,
 #app .fuel__fill .range-slider-knob {
-  background-color: rgba(0, 0, 0, 0.9) !important; /* Чёрный акцент */
+  background-color: rgba(255, 255, 255, 0.9) !important; /* Белый акцент */
 }
-#app .fuel__fill-data .text { color: hsla(0, 0%, 90%, .75) !important; } /* Светло-серый текст */
-#app .fuel__fill-data .value { color: #f0f0f0 !important; } /* Белый текст */
+#app .fuel__fill-data .text { color: hsla(0, 0%, 10%, 0.75) !important; } /* Темно-серый текст */
+#app .fuel__fill-data .value { color: #000000 !important; } /* Черный текст */
 
 #app .fuel__class-col.selected,
 #app .fuel__class-col:hover {
-  background: rgba(0, 0, 0, 0.9) !important; /* Чёрный акцент */
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2) !important; /* Тень для чёрного */
-  color: #ffffff !important; /* Белый текст */
+  background: rgba(255, 255, 255, 0.9) !important; /* Белый акцент */
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2) !important; /* Тень для контраста */
+  color: #000000 !important; /* Черный текст */
 }
 
 #app .fuel__button {
-  background: linear-gradient(185.93deg, rgba(0, 0, 0, 0.8) -22.13%, rgba(0, 0, 0, 0.6) 122.51%) !important; /* Градиент из чёрных оттенков */
-  color: #ffffff !important; /* Белый текст */
+  background: linear-gradient(185.93deg, rgba(255, 255, 255, 0.8) -22.13%, rgba(255, 255, 255, 0.6) 122.51%) !important; /* Градиент из белых оттенков */
+  color: #000000 !important; /* Черный текст */
 }
 #app .fuel__button:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important; /* Тень для чёрного */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important; /* Тень для контраста */
 }
 
 /* ---------- Экран "без сознания" ---------- */
@@ -461,41 +461,41 @@ body .info-card__data {
 }
 #app .death,
 #app .death-timer {
-  background: rgba(0, 0, 0, 0.85) !important; /* Более тёмный чёрный фон */
+  background: rgba(255, 255, 255, 0.85) !important; /* Более непрозрачный белый фон */
   font-style: italic;
-  color: #cccccc !important; /* Светло-серый текст */
+  color: #333333 !important; /* Темно-серый текст */
 }
 
 /* ---------- Информационные карточки ---------- */
 body .info-card,
 body .info-card__data {
-  background: rgba(0, 0, 0, 0.7); /* Чёрный фон */
+  background: rgba(255, 255, 255, 0.6); /* Белый фон */
   border-radius: 31px !important;
-  color: #f0f0f0 !important; /* Белый текст */
+  color: #000000 !important; /* Черный текст */
 }
-body .info-card .text { color: #f0f0f0 !important; } /* Белый текст */
+body .info-card .text { color: #000000 !important; } /* Черный текст */
 
 /* ---------- Радиальное меню (player-interaction) — ИСПРАВЛЕНО ---------- */
 #app .player-interaction__icon,
 #app .player-interaction__icon_active {
-  fill: #f0f0f0 !important; /* Белая иконка */
+  fill: #000000 !important; /* Черная иконка */
 }
 
 #app .player-interaction__title,
 #app .player-interaction__title_active {
-  color: #f0f0f0 !important; /* Белый заголовок */
+  color: #000000 !important; /* Черный заголовок */
 }
 
 #app .player-interaction__container,
 #app .player-interaction-layer {
-  background: rgba(0, 0, 0, 0.8); /* Чёрный фон */
+  background: rgba(255, 255, 255, 0.8); /* Белый фон */
   border: none;
   box-shadow: none !important; /* Убрана тень */
 }
 
 #app .player-interaction__inner {
-  background: rgba(0, 0, 0, 0.5); /* Тёмный фон */
-  border: .09vh solid rgba(0, 0, 0, 0.2); /* Чёрная граница */
+  background: rgba(255, 255, 255, 0.5); /* Светлый фон */
+  border: .09vh solid rgba(255, 255, 255, 0.2); /* Белая граница */
 }
 
 /* Убираем SVG фон и текстуру */
@@ -513,15 +513,15 @@ body .info-card .text { color: #f0f0f0 !important; } /* Белый текст */
   border-radius: 10px;
   height: 613px;
   width: 1283px;
-  background: rgba(0, 0, 0, 0.85) !important; /* Тёмный чёрный фон */
-  color: #f0f0f0 !important; /* Белый текст */
+  background: rgba(255, 255, 255, 0.85) !important; /* Светлый белый фон */
+  color: #000000 !important; /* Черный текст */
 }
 #app .trade-items-main { right: -1.2vw; top: -2vh; }
 
 /* ---------- Чат RADMIR ---------- */
 #app .radmir-chat-input__input input::selection { 
-    background-color: rgba(240, 240, 240, 0.3); 
-} /* Выделение текста в светлом стиле */
+    background-color: rgba(255, 255, 255, 0.3); 
+} /* Выделение текста в темном стиле */
 
 #app .radmir-chat__before {
     position: fixed;
@@ -537,16 +537,16 @@ body .info-card .text { color: #f0f0f0 !important; } /* Белый текст */
 }
 
 #app .radmir-chat-input__input {
-    background: rgba(0, 0, 0, 1) !important; /* Темный фон */
+    background: rgba(0, 0, 0, 1) !important; /* Светлый фон */
     border-radius: 11px !important; /* Более острые углы */
-    color: #f0f0f0 !important; /* Белый текст ввода */
-    border: 2px solid #ffffff !important; /* Белая обводка */
+    color: #ffffffff !important; /* Черный текст ввода */
+    border: 3px solid #ffffffff !important; /* Черная обводка */
 }
 
 #app .radmir-chat-input__input input { 
     margin-left: .9vh !important; 
-    color: #f0f0f0 !important; 
-} /* Белый текст ввода */
+    color: #ffffffff !important; 
+} /* Черный текст ввода */
 
 #app .radmir-chat-input__input-lang { 
     margin-right: 1vh !important; 
@@ -557,11 +557,11 @@ body .info-card .text { color: #f0f0f0 !important; } /* Белый текст */
 }
 /* ---------- Модальные окна ---------- */
 #app .modal-container-wrapper {
-  background: rgba(0, 0, 0, 0.85) !important; /* Тёмный чёрный фон */
-  border: 0.19vh solid rgba(0, 0, 0, 0.1); /* Чёрная граница */
+  background: rgba(255, 255, 255, 0.85) !important; /* Светлый белый фон */
+  border: 0.19vh solid rgba(255, 255, 255, 0.1); /* Белая граница */
   border-radius: 2.5vh !important;
   box-shadow: none !important; /* Убрана тень */
-  color: #f0f0f0 !important; /* Белый текст */
+  color: #000000 !important; /* Черный текст */
 }
 #app .modal-overlay { background: none !important; }
 #app .modal_violet .modal-container,
@@ -575,28 +575,28 @@ body .info-card .text { color: #f0f0f0 !important; } /* Белый текст */
 /* ---------- Окна (window) ---------- */
 body .window-bg,
 body .window__before { background-image: none; }
-body .window__title { text-align: center; color: #f0f0f0 !important; } /* Белый заголовок */
+body .window__title { text-align: center; color: #000000 !important; } /* Черный заголовок */
 body .window-table__item {
-  color: #f0f0f0 !important; /* Белый текст */
+  color: #000000 !important; /* Черный текст */
   border-radius: 2vh;
   border: .09vh solid transparent;
   transition: .25s;
-  background: rgba(0, 0, 0, 0.3); /* Чёрный фон элемента */
+  background: rgba(255, 255, 255, 0.3); /* Белый фон элемента */
 }
 body .window-table__item.selected {
-  background: rgba(0, 0, 0, 0.9) !important; /* Чёрный акцент */
-  color: #ffffff !important; /* Белый текст */
+  background: rgba(255, 255, 255, 0.9) !important; /* Белый акцент */
+  color: #000000 !important; /* Черный текст */
   border: .09vh solid transparent;
 }
-body .window-table__item:hover { background: rgba(40, 40, 40, 0.4); } /* Светлее при наведении */
+body .window-table__item:hover { background: rgba(215, 215, 215, 0.4); } /* Темнее при наведении для контраста */
 body .window-button {
   border-radius: 2vh;
-  color: #f0f0f0 !important; /* Белый текст */
-  background: rgba(0, 0, 0, 0.4); /* Чёрный фон кнопки */
+  color: #000000 !important; /* Черный текст */
+  background: rgba(255, 255, 255, 0.4); /* Белый фон кнопки */
 }
 #app .window-button:hover {
-  color: #ffffff !important; /* Белый текст */
-  background: rgba(0, 0, 0, 0.9) !important; /* Чёрный акцент */
+  color: #000000 !important; /* Черный текст */
+  background: rgba(255, 255, 255, 0.9) !important; /* Белый акцент */
 }
 
 /* ---------- Инвентарь ---------- */
@@ -605,10 +605,10 @@ body .window-button {
 #app .inventory-extra__container,
 #app .inventory-main,
 #app .inventory-action__modal {
-  background: rgba(0, 0, 0, 0.8); /* Чёрный фон */
+  background: rgba(255, 255, 255, 0.8); /* Белый фон */
   border-radius: 1.1vh;
   padding: 2vh;
-  color: #f0f0f0 !important; /* Белый текст */
+  color: #000000 !important; /* Черный текст */
 }
 #app .inventory-main__after,
 #app .inventory-main__before { display: none; }
@@ -621,18 +621,18 @@ body .window-button {
 #app .inventory-container__box,
 #app .inventory-container__slot {
   border-radius: 1vh;
-  border: .1vh solid rgba(0, 0, 0, 0.2); /* Чёрная граница */
-  background: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15) 150%); /* Чёрный градиент */
+  border: .1vh solid rgba(255, 255, 255, 0.2); /* Белая граница */
+  background: radial-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.15) 150%); /* Белый градиент */
 }
 #app .inventory-container__slot:before {
   border-radius: 1vh;
-  border: .1vh solid rgba(0, 0, 0, 0.9) !important; /* Чёрная граница */
-  background: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8) 150%); /* Чёрный градиент */
+  border: .1vh solid rgba(255, 255, 255, 0.9) !important; /* Белая граница */
+  background: radial-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.8) 150%); /* Белый градиент */
 }
 
 #app .inventory-capacity__bar,
 #app .inventory-wear__bar {
-  background: rgba(0, 0, 0, 0.2); /* Чёрный фон полосы */
+  background: rgba(255, 255, 255, 0.2); /* Белый фон полосы */
   border-radius: 1vh;
   width: 100%;
   left: 1.5vh;
@@ -641,7 +641,7 @@ body .window-button {
 #app .inventory-capacity__bar__fill,
 #app .inventory-wear__bar__fill {
   border-radius: 1vh;
-  background: rgba(0, 0, 0, 0.9) !important; /* Чёрный заполнитель полосы */
+  background: rgba(255, 255, 255, 0.9) !important; /* Белый заполнитель полосы */
 }
   #app .capture-table {
     background: #00000061;

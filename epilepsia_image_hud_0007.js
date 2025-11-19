@@ -411,7 +411,7 @@ body #app .hud-radmir-radar__map {
 #app .hud-radmir-radar__radar { 
   width: 26.3vh; 
   border-radius: 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
 }
 #app .hud-radmir-radar { 
   left: 7.2vh 
@@ -579,14 +579,14 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
 
 #app .player-interaction__container,
 #app .player-interaction-layer {
-  background: linear-gradient(145deg, rgba(50, 50, 50, 0.4), rgba(0, 0, 0, 0.4), rgba(50, 50, 50, 0.4)) !important; /* Белый фон */
+  background: #32323266; /* Белый фон */
   border: none;
   box-shadow: none !important; /* Убрана тень */
 }
 
 #app .player-interaction__inner {
-  background: linear-gradient(145deg, rgba(50, 50, 50, 0.4), rgba(0, 0, 0, 0.4), rgba(50, 50, 50, 0.4)) !important; /* Светлый фон */
-  border: .09vh solid rgba(255, 255, 255, 0.2); /* Белая граница */
+  background: linear-gradient(145deg, rgba(50, 50, 50, 0.4), rgba(0, 0, 0, 0.4), rgba(50, 50, 50, 0.4)) !important /* Светлый фон */
+  border: .09vh solid #ffffff33; /* Белая граница */
 }
 
 /* Убираем SVG фон и текстуру */

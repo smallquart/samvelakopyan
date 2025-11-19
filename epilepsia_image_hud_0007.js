@@ -429,7 +429,7 @@ body #app .hud-radmir-radar__map {
 #app .fuel__container,
 body .info-card,
 body .info-card__data {
-  background: linear-gradient(145deg, #000000, #1a1a1a, #000000) !important;
+  background: background: url('https://i.pinimg.com/736x/a6/78/b3/a678b3fb0fe82bcdf53ef498112dc58b.jpg') center/cover;
   border-radius: 1.1vh;
   color: #ffffff !important; /* Белый текст */
   position: relative;
@@ -569,23 +569,28 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
 /* ---------- Радиальное меню (player-interaction) — ИСПРАВЛЕНО ---------- */
 #app .player-interaction__icon,
 #app .player-interaction__icon_active {
-  fill: linear-gradient(145deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4)) !important; /* Черная иконка */
+  fill: #ffffffff !important /* Черная иконка */
 }
 
 #app .player-interaction__title,
 #app .player-interaction__title_active {
-  color: linear-gradient(145deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4)) !important; /* Черный заголовок */
+  color: #ffffffff !important; /* Черный заголовок */
 }
 
 #app .player-interaction__container,
 #app .player-interaction-layer {
-  background: #32323266; /* Белый фон */
+  #app .player-interaction__container,
+#app .player-interaction-layer {
+  background: url('https://i.pinimg.com/736x/a6/78/b3/a678b3fb0fe82bcdf53ef498112dc58b.jpg') center/cover; /* Черный фон с фоновой картинкой */
+  border: none;
+  box-shadow: none !important; /* Убрана тень */
+}
   border: none;
   box-shadow: none !important; /* Убрана тень */
 }
 
 #app .player-interaction__inner {
-  background: linear-gradient(145deg, rgba(50, 50, 50, 0.4), rgba(0, 0, 0, 0.4), rgba(50, 50, 50, 0.4)) !important /* Светлый фон */
+  background: #000000 !important /* Светлый фон */
   border: .09vh solid #ffffff33; /* Белая граница */
 }
 

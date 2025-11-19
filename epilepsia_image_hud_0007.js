@@ -24,10 +24,13 @@ function AddHud() {
             notificationElement.style.fontFamily = 'Arial, sans-serif';
             notificationElement.style.minWidth = '250px';
             notificationElement.style.textAlign = 'left';
+            // Изначально скрываем уведомление
+            notificationElement.style.display = 'none';
             document.body.appendChild(notificationElement);
         }
 
         notificationElement.textContent = message;
+        notificationElement.style.display = 'block'; // Показываем при установке текста
 
         setTimeout(() => {
             if (notificationElement && notificationElement.parentNode) {
@@ -128,7 +131,6 @@ function AddHud() {
         hudStyleElement.id = "hudStyles";
         hudStyleElement.innerHTML = `
 @font-face{font-family:'GothamPro Light';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_light.ttf') format('truetype');font-weight:300;font-style:normal}@font-face{font-family:'GothamPro Light Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_lightitalic.ttf') format('truetype');font-weight:300;font-style:italic}@font-face{font-family:'GothamPro Regular';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro.ttf') format('truetype');font-weight:400;font-style:normal}@font-face{font-family:'GothamPro Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_italic.ttf') format('truetype');font-weight:400;font-style:italic}@font-face{font-family:'GothamPro Medium';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_medium.ttf') format('truetype');font-weight:500;font-style:normal}@font-face{font-family:'GothamPro Medium Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_mediumitalic.ttf') format('truetype');font-weight:500;font-style:italic}@font-face{font-family:'GothamPro Bold';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_bold.ttf') format('truetype');font-weight:700;font-style:normal}@font-face{font-family:'GothamPro Bold Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_bolditalic.ttf') format('truetype');font-weight:700;font-style:italic}@font-face{font-family:'GothamPro Black';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_black.ttf') format('truetype');font-weight:900;font-style:normal}@font-face{font-family:'GothamPro Black Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_blackitalic.ttf') format('truetype');font-weight:900;font-style:italic}
-      /* Исправлено: изменен z-index на положительное значение */
       .Old-Fixed-Hud,
       .Old-Fixed-HudTop,
       .Old-Fixed-Logo,
@@ -140,7 +142,7 @@ function AddHud() {
       .Old-Fixed-Weapon,
       .Old-Fixed-Wanted,
       .Old-Fixed-HudBottom{
-      z-index: 9999; /* Установлено высокое положительное значение */
+      z-index: -1;
       }
       #app .hud-radmir-wanted {
         display: none;
@@ -727,6 +729,8 @@ body .window-button {
       document.head.appendChild(hudStyleElement);
       const hudElement = document.createElement("div");
       hudElement.id = 'OldHudContainer';
+      // Изначально скрываем HUD
+      hudElement.style.display = 'none';
       hudElement.innerHTML = `
       <div class="Old-Fixed-Hud">
       <div class="Old-Fixed-HudTop">
@@ -787,8 +791,29 @@ body .window-button {
       </div></div>
       `;
       document.body.appendChild(hudElement);
-      hudElements.push(OldHudContainer);
+      hudElements.push(hudElement); // Добавляем именно созданный элемент
     }
+
+    // --- НОВАЯ ФУНКЦИЯ ДЛЯ ПРОВЕРКИ СТАТУСА АВТОРИЗАЦИИ ---
+    function checkAuthStatus() {
+        // ПРЕДПОЛОЖЕНИЕ: Страница после авторизации имеет класс 'authorized' на body
+        // Или что-то вроде #app, либо исчезает класс, например, 'authenticating'
+        // Пожалуйста, адаптируйте селектор в зависимости от реального состояния DOM после авторизации.
+        // Ниже приведён пример для класса 'authorized' на body.
+        const isAuthorized = document.body.classList.contains('authorized');
+
+        // Также проверим, существует ли элемент HUD
+        const hudElement = document.getElementById('OldHudContainer');
+
+        if (isAuthorized && hudElement) {
+            // Если авторизован и HUD существует, отображаем его
+            hudElement.style.display = '';
+            console.log("HUD отображен после авторизации.");
+            // Останавливаем проверку, так как задача выполнена
+            clearInterval(authCheckInterval);
+        }
+    }
+
     const updateFunctions = {
         show: (value) => {
             const hudEl = document.querySelector(".Old-Fixed-Hud");
@@ -984,17 +1009,22 @@ body .window-button {
             }
         }, 100);
     }
-    initializeHudProxy();
+
+    // --- ИНИЦИАЛИЗАЦИЯ HUD ---
     createHud();
+    initializeHudProxy();
 
     // Принудительно показать элемент ZZ после создания HUD, если он существует
     const initialZZElement = document.querySelector(".Old-Fixed-ZZ");
     if (initialZZElement) {
-        // z-index теперь управляется CSS выше
         initialZZElement.style.display = "block"; // Устанавливаем display на block
         // Или вызываем функцию greenZone с true, если она должна управлять этим
         // updateFunctions.greenZone(true); // Это также сработает, если функция правильно настроена
     }
+
+    // --- ЗАПУСК ПРОВЕРКИ СТАТУСА АВТОРИЗАЦИИ ---
+    // Проверяем статус авторизации каждые 500 миллисекунд
+    const authCheckInterval = setInterval(checkAuthStatus, 500);
 
     window.onInfoChange = onInfoChange;
     setTimeout(() => {
@@ -1005,6 +1035,9 @@ body .window-button {
         if (hudStyleElement) {
             hudStyleElement.remove();
         }
+        // Очищаем интервал проверки, если HUD был удален до авторизации
+        clearInterval(authCheckInterval);
     });
-  };
+}
+// Запуск функции
 AddHud();

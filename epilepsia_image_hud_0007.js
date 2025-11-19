@@ -704,7 +704,18 @@ body .window__title {
   text-align: center; 
   color: #ffffff !important; 
   animation: titleGlow 2s ease-in-out infinite alternate;
+  position: relative;
 } /* Белый заголовок с анимацией */
+body .window__title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  opacity: 0.5;
+}
 @keyframes titleGlow {
   from { text-shadow: 0 0 0px #ffffff; }
   to { text-shadow: 0 0 0px #ffffff, 0 0 0px #ffffff; }

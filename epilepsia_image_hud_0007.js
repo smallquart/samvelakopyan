@@ -399,7 +399,7 @@ function AddHud() {
   align-items: center; 
   border-radius: 0; 
   border: none !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.81);
 }
 body #app .hud-radmir-radar__map { 
   transition: .3s 
@@ -569,12 +569,12 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
 /* ---------- Радиальное меню (player-interaction) — ИСПРАВЛЕНО ---------- */
 #app .player-interaction__icon,
 #app .player-interaction__icon_active {
-  fill: #000000 !important; /* Черная иконка */
+  fill: linear-gradient(145deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4)) !important; /* Черная иконка */
 }
 
 #app .player-interaction__title,
 #app .player-interaction__title_active {
-  color: #000000 !important; /* Черный заголовок */
+  color: linear-gradient(145deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4)) !important; /* Черный заголовок */
 }
 
 #app .player-interaction__container,

@@ -128,6 +128,7 @@ function AddHud() {
         hudStyleElement.id = "hudStyles";
         hudStyleElement.innerHTML = `
 @font-face{font-family:'GothamPro Light';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_light.ttf') format('truetype');font-weight:300;font-style:normal}@font-face{font-family:'GothamPro Light Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_lightitalic.ttf') format('truetype');font-weight:300;font-style:italic}@font-face{font-family:'GothamPro Regular';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro.ttf') format('truetype');font-weight:400;font-style:normal}@font-face{font-family:'GothamPro Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_italic.ttf') format('truetype');font-weight:400;font-style:italic}@font-face{font-family:'GothamPro Medium';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_medium.ttf') format('truetype');font-weight:500;font-style:normal}@font-face{font-family:'GothamPro Medium Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_mediumitalic.ttf') format('truetype');font-weight:500;font-style:italic}@font-face{font-family:'GothamPro Bold';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_bold.ttf') format('truetype');font-weight:700;font-style:normal}@font-face{font-family:'GothamPro Bold Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_bolditalic.ttf') format('truetype');font-weight:700;font-style:italic}@font-face{font-family:'GothamPro Black';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_black.ttf') format('truetype');font-weight:900;font-style:normal}@font-face{font-family:'GothamPro Black Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_blackitalic.ttf') format('truetype');font-weight:900;font-style:italic}
+      /* Исправлено: изменен z-index на положительное значение */
       .Old-Fixed-Hud,
       .Old-Fixed-HudTop,
       .Old-Fixed-Logo,
@@ -139,7 +140,7 @@ function AddHud() {
       .Old-Fixed-Weapon,
       .Old-Fixed-Wanted,
       .Old-Fixed-HudBottom{
-      z-index: -1;
+      z-index: 9999; /* Установлено высокое положительное значение */
       }
       #app .hud-radmir-wanted {
         display: none;
@@ -989,6 +990,7 @@ body .window-button {
     // Принудительно показать элемент ZZ после создания HUD, если он существует
     const initialZZElement = document.querySelector(".Old-Fixed-ZZ");
     if (initialZZElement) {
+        // z-index теперь управляется CSS выше
         initialZZElement.style.display = "block"; // Устанавливаем display на block
         // Или вызываем функцию greenZone с true, если она должна управлять этим
         // updateFunctions.greenZone(true); // Это также сработает, если функция правильно настроена

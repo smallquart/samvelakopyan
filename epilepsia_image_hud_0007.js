@@ -404,30 +404,54 @@ function AddHud() {
 #app .fuel__container,
 body .info-card,
 body .info-card__data {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85), rgba(240, 240, 240, 0.7)) !important;
-  border-radius: 1.8vh;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #2c3e50 !important;
+  background: linear-gradient(145deg, #000000, #2a0000, #000000) !important;
+  border-radius: 1.1vh;
+  color: #ffffff !important; /* Белый текст */
+  position: relative;
+  overflow: hidden;
+}
+
+#app .container::before,
+#app .inventory-extra__container::before,
+#app .inventory-main::before,
+#app .inventory-action__modal::before,
+#app .modal-container-wrapper::before,
+#app .fuel__container::before,
+body .info-card::before,
+body .info-card__:before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+  animation: gradientRotate 8s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes gradientRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* ---------- Топливное меню ---------- */
 #app .fuel__button .text:before {
-  background: url("image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTEuNDUxIDFMNC40ODQgNy44NDhMMSA0LjQyNCIgc3Ryb2tlPSIjMmMzZTUwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==") center/contain no-repeat !important;
+  background: url("image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTEuNDUxIDFMNC40ODQgNy44NDhMMSA0LjQyNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==") center/contain no-repeat !important; /* Белый цвет иконки */
 }
 #app .fuel__container:before { opacity: 0; }
 #app .fuel__container { padding: 3.33vh 2.96vh; }
 #app .fuel__title {
   font-size: 2.04vh;
   line-height: 1.94vh;
-  color: #2c3e50 !important;
+  color: #ffffff !important; /* Белый текст */
   text-align: left;
-  font-weight: 600;
-  background: linear-gradient(90deg, #2c3e50, #7f8c8d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+@keyframes textGlow {
+  from { text-shadow: 0 0 5px #ff4d4d; }
+  to { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
 }
 #app .fuel__close {
   left: auto !important;
@@ -438,33 +462,47 @@ body .info-card__data {
   gap: .5vh;
 }
 #app .fuel__close:hover img {
-  filter: drop-shadow(0 0 8px rgba(44, 62, 80, 0.4)) !important;
+  filter: drop-shadow(0 0 8px #ff0000) !important; /* Красная тень при наведении */
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 #app .fuel__fill .range-slider-fill,
 #app .fuel__fill .range-slider-knob {
-  background: linear-gradient(90deg, #3498db, #2ecc71) !important;
+  background: linear-gradient(90deg, #000000, #ff4d4d, #000000) !important; /* Черно-красный градиент */
 }
-#app .fuel__fill-data .text { color: #7f8c8d !important; }
-#app .fuel__fill-data .value { color: #2c3e50 !important; }
+#app .fuel__fill-data .text { color: #ffffff !important; } /* Белый текст */
+#app .fuel__fill-data .value { color: #ffffff !important; } /* Белый текст */
 
 #app .fuel__class-col.selected,
 #app .fuel__class-col:hover {
-  background: linear-gradient(145deg, rgba(52, 152, 219, 0.8), rgba(46, 204, 113, 0.6)) !important;
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25) !important;
-  color: #ffffff !important;
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
+  background: linear-gradient(145deg, #ff4d4d, #000000, #ff4d4d) !important; /* Черно-красный градиент */
+  box-shadow: 0 12px 22px rgba(255, 0, 0, 0.4) !important; /* Красная тень для контраста */
+  color: #ffffff !important; /* Белый текст */
+  animation: buttonGlow 1.5s ease-in-out infinite alternate;
+}
+@keyframes buttonGlow {
+  from { box-shadow: 0 12px 22px rgba(255, 0, 0, 0.4); }
+  to { box-shadow: 0 12px 30px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6); }
 }
 
 #app .fuel__button {
-  background: linear-gradient(185.93deg, rgba(52, 152, 219, 0.85) -22.13%, rgba(46, 204, 113, 0.6) 122.51%) !important;
-  color: #ffffff !important;
-  border-radius: 1.5vh;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(185.93deg, rgba(0, 0, 0, 0.9) -22.13%, rgba(255, 0, 0, 0.6) 122.51%) !important; /* Черно-красный градиент */
+  color: #ffffff !important; /* Белый текст */
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 #app .fuel__button:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5) !important; /* Красная тень для контраста */
   transform: translateY(-2px);
+  animation: buttonHoverGlow 0.5s ease-in-out infinite alternate;
+}
+@keyframes buttonHoverGlow {
+  from { box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5); }
+  to { box-shadow: 0 6px 30px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6); }
 }
 
 /* ---------- Экран "без сознания" ---------- */
@@ -475,129 +513,150 @@ body .info-card__data {
 }
 #app .death,
 #app .death-timer {
-  background: linear-gradient(135deg, rgba(231, 76, 60, 0.85), rgba(192, 57, 43, 0.7)) !important;
+  background: linear-gradient(145deg, #000000, #2a0000, #000000) !important; /* Черно-красный градиент */
   font-style: italic;
-  color: #ffffff !important;
-  border-radius: 2vh;
-  box-shadow: 0 8px 32px rgba(231, 76, 60, 0.2);
+  color: #ffffff !important; /* Белый текст */
+  animation: deathGlow 3s ease-in-out infinite alternate;
+}
+@keyframes deathGlow {
+  from { text-shadow: 0 0 10px #ff0000; }
+  to { text-shadow: 0 0 30px #ff0000, 0 0 40px #ff0000; }
 }
 
 /* ---------- Информационные карточки ---------- */
 body .info-card,
 body .info-card__data {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8));
-  border-radius: 2.5vh !important;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #2c3e50 !important;
-  padding: 1.5vh;
-  transition: all 0.3s ease;
+  background: linear-gradient(145deg, #000000, #2a0000, #000000) !important; /* Черно-красный градиент */
+  border-radius: 31px !important;
+  color: #ffffff !important; /* Белый текст */
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  animation: cardFloat 4s ease-in-out infinite;
 }
-body .info-card:hover,
-body .info-card__data:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
-body .info-card .text { color: #34495e !important; }
+body .info-card .text { color: #ffffff !important; } /* Белый текст */
 
-/* ---------- Радиальное меню (player-interaction) — ИСПРАВЛЕНО ---------- */
+/* ---------- Радиальное меню (player-interaction) — НЕ ТРОГАЕМ ---------- */
 #app .player-interaction__icon,
 #app .player-interaction__icon_active {
-  fill: #2c3e50 !important;
-  transition: all 0.3s ease;
+  fill: #ffffffff !important; /* Черная иконка */
 }
 
 #app .player-interaction__title,
 #app .player-interaction__title_active {
-  color: #2c3e50 !important;
-  font-weight: 600;
+  color: #ffffffff !important; /* Черная иконка */
 }
 
 #app .player-interaction__container,
 #app .player-interaction-layer {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.7));
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2) !important;
-  backdrop-filter: blur(8px);
+  background: #000000; /* Белый фон */
+  border: none;
+  box-shadow: none !important; /* Убрана тень */
 }
 
 #app .player-interaction__inner {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(240, 240, 240, 0.4));
-  border: .09vh solid rgba(255, 255, 255, 0.3);
+  background: #00000080; /* Светлый фон */
+  border: .09vh solid rgba(255, 255, 255, 0.2); /* Белая граница */
 }
 
+/* Убираем SVG фон и текстуру */
 #app .player-interaction__container {
-  background-image: none !important;
+  background-image: none !important; /* Убран SVG фон */
 }
+/* Убираем PNG текстуру */
 #app .player-interaction__container:before {
-  content: none !important;
+  content: none !important; /* Полностью убрана текстура */
 }
 
 /* ---------- Торговля ---------- */
 #app .trade-items { background: none; }
 #app .trade-items__container {
-  border-radius: 1.8vh;
+  border-radius: 10px;
   height: 613px;
   width: 1283px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8)) !important;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #2c3e50 !important;
+  background: linear-gradient(145deg, #000000, #2a0000, #000000) !important; /* Черно-красный градиент */
+  color: #ffffff !important; /* Белый текст */
+  animation: tradeContainerGlow 5s ease-in-out infinite alternate;
+}
+@keyframes tradeContainerGlow {
+  from { box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.2); }
+  to { box-shadow: inset 0 0 30px rgba(255, 0, 0, 0.4), 0 0 20px rgba(255, 0, 0, 0.2); }
 }
 #app .trade-items-main { right: -1.2vw; top: -2vh; }
 
 /* ---------- Чат RADMIR ---------- */
 #app .radmir-chat-input__input input::selection { 
-    background-color: rgba(52, 152, 219, 0.3); 
-}
+    background-color: rgba(255, 0, 0, 0.3); 
+} /* Выделение текста в красном стиле */
 
 #app .radmir-chat__before {
     position: fixed;
     width: 100vw;
     height: 41.66vw;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(240, 240, 240, 0.05));
+    background: none !important;
     left: 0; 
     top: 0; 
     z-index: -1;
-    opacity: 0.5;
+    opacity: 0;
     transition: all .2s ease;
     pointer-events: none;
 }
 
 #app .radmir-chat-input__input {
-    background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(33, 46, 64, 0.8)) !important;
-    border-radius: 1.2vh !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #000000, #2a0000, #000000) !important; /* Черно-красный градиент */
+    border-radius: 11px !important; /* Более острые углы */
+    color: #ffffff !important; /* Белый текст ввода */
+    border: 3px solid rgba(255, 0, 0, 0.3) !important; /* Красная обводка */
+    transition: all 0.3s ease;
+}
+
+#app .radmir-chat-input__input:hover {
+    border-color: rgba(255, 0, 0, 0.6) !important;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
 }
 
 #app .radmir-chat-input__input input { 
     margin-left: .9vh !important; 
     color: #ffffff !important; 
-}
+} /* Белый текст ввода */
+
 #app .radmir-chat-input__input-lang { 
     margin-right: 1vh !important; 
 }
+
 #app .controls-button { 
-    border-radius: 1.2vh;
-    background: linear-gradient(145deg, rgba(52, 152, 219, 0.8), rgba(41, 128, 185, 0.7));
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2px; /* Более острые углы */
+    background: linear-gradient(145deg, #000000, #2a0000, #000000) !important; /* Черно-красный градиент */
+    color: #ffffff !important; /* Белый текст */
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+#app .controls-button:hover {
+    background: linear-gradient(145deg, #2a0000, #000000, #2a0000) !important; /* Обратный градиент при наведении */
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    animation: controlButtonGlow 1s ease-in-out infinite alternate;
+}
+@keyframes controlButtonGlow {
+  from { box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+  to { box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); }
 }
 
 /* ---------- Модальные окна ---------- */
 #app .modal-container-wrapper {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.85)) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 2.8vh !important;
-  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25) !important;
-  backdrop-filter: blur(6px);
-  color: #2c3e50 !important;
-  transition: all 0.3s ease;
+  background: linear-gradient(145deg, #000000, #2a0000, #000000) !important; /* Черно-красный градиент */
+  border: 0.19vh solid rgba(255, 0, 0, 0.2); /* Красная граница */
+  border-radius: 2.5vh !important;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.4) !important; /* Красная тень */
+  color: #ffffff !important; /* Белый текст */
+  animation: modalGlow 4s ease-in-out infinite alternate;
 }
-#app .modal-overlay { background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)) !important; }
+@keyframes modalGlow {
+  from { box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); }
+  to { box-shadow: 0 0 40px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.4); }
+}
+#app .modal-overlay { background: none !important; }
 #app .modal_violet .modal-container,
 #app .modal_orange .modal-container,
 #app .modal_green .modal-container,
@@ -611,45 +670,63 @@ body .window-bg,
 body .window__before { background-image: none; }
 body .window__title { 
   text-align: center; 
-  color: #2c3e50 !important; 
-  font-weight: 700;
-  background: linear-gradient(90deg, #2c3e50, #34495e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff !important; 
+  animation: titleGlow 2s ease-in-out infinite alternate;
+} /* Белый заголовок с анимацией */
+@keyframes titleGlow {
+  from { text-shadow: 0 0 5px #ff4d4d; }
+  to { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
 }
 body .window-table__item {
-  color: #2c3e50 !important;
-  border-radius: 1.5vh;
+  color: #ffffff !important; /* Белый текст */
+  border-radius: 2vh;
   border: .09vh solid transparent;
-  transition: all 0.3s ease;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(240, 240, 240, 0.6));
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: .25s;
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(42, 0, 0, 0.3), rgba(0, 0, 0, 0.3)) !important; /* Черно-красный градиент */
+  animation: itemFloat 6s ease-in-out infinite;
+}
+@keyframes itemFloat {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-2px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(2px); }
 }
 body .window-table__item.selected {
-  background: linear-gradient(145deg, rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.8)) !important;
-  color: #ffffff !important;
-  border: .09vh solid transparent;
-  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+  background: linear-gradient(145deg, #ff4d4d, #000000, #ff4d4d) !important; /* Черно-красный градиент */
+  color: #ffffff !important; /* Белый текст */
+  border: .09vh solid rgba(255, 0, 0, 0.5);
+  animation: selectedItemGlow 1.5s ease-in-out infinite alternate;
+}
+@keyframes selectedItemGlow {
+  from { box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+  to { box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); }
 }
 body .window-table__item:hover { 
-  background: linear-gradient(145deg, rgba(236, 240, 241, 0.8), rgba(218, 223, 225, 0.7)); 
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, rgba(69, 0, 0, 0.4), rgba(0, 0, 0, 0.4), rgba(69, 0, 0, 0.4)) !important; /* Темно-красный градиент */
+  transform: scale(1.02);
+  animation: itemHoverGlow 0.5s ease-in-out infinite alternate;
+} /* Темнее при наведении для контраста */
+@keyframes itemHoverGlow {
+  from { box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); }
+  to { box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
 }
 body .window-button {
-  border-radius: 1.5vh;
-  color: #ffffff !important;
-  background: linear-gradient(145deg, rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.8));
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+  border-radius: 2vh;
+  color: #ffffff !important; /* Белый текст */
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.4), rgba(42, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) !important; /* Черно-красный градиент */
+  border: 1px solid rgba(255, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 #app .window-button:hover {
-  color: #ffffff !important;
-  background: linear-gradient(145deg, rgba(41, 128, 185, 0.9), rgba(30, 100, 160, 0.8)) !important;
+  color: #ffffff !important; /* Белый текст */
+  background: linear-gradient(145deg, #ff4d4d, #2a0000, #ff4d4d) !important; /* Красно-черный градиент */
+  border-color: rgba(255, 0, 0, 0.5);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+  animation: buttonHoverGlowWindow 0.5s ease-in-out infinite alternate;
+}
+@keyframes buttonHoverGlowWindow {
+  from { box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+  to { box-shadow: 0 5px 20px rgba(255, 0, 0, 0.6); }
 }
 
 /* ---------- Инвентарь ---------- */
@@ -658,13 +735,15 @@ body .window-button {
 #app .inventory-extra__container,
 #app .inventory-main,
 #app .inventory-action__modal {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8));
-  border-radius: 1.8vh;
+  background: linear-gradient(145deg, #000000, #2a0000, #000000) !important; /* Черно-красный градиент */
+  border-radius: 1.1vh;
   padding: 2vh;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #2c3e50 !important;
+  color: #ffffff !important; /* Белый текст */
+  animation: inventoryFloat 5s ease-in-out infinite;
+}
+@keyframes inventoryFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 #app .inventory-main__after,
 #app .inventory-main__before { display: none; }
@@ -676,84 +755,43 @@ body .window-button {
 #app .inventory-capacity,
 #app .inventory-container__box,
 #app .inventory-container__slot {
-  border-radius: 1.2vh;
-  border: .1vh solid rgba(255, 255, 255, 0.3);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(240, 240, 240, 0.5));
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 1vh;
+  border: .1vh solid rgba(255, 0, 0, 0.2); /* Красная граница */
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.6), rgba(42, 0, 0, 0.6) 150%); /* Черно-красный градиент */
   transition: all 0.3s ease;
 }
 #app .inventory-container__slot:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.7));
-  transform: translateY(-1px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+  animation: slotHoverGlow 0.5s ease-in-out infinite alternate;
+}
+@keyframes slotHoverGlow {
+  from { box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); }
+  to { box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
 }
 #app .inventory-container__slot:before {
-  border-radius: 1.2vh;
-  border: .1vh solid rgba(255, 255, 255, 0.9) !important;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(240, 240, 240, 0.6));
+  border-radius: 1vh;
+  border: .1vh solid rgba(255, 0, 0, 0.5) !important; /* Красная граница */
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), rgba(42, 0, 0, 0.8) 150%); /* Черно-красный градиент */
 }
 
 #app .inventory-capacity__bar,
 #app .inventory-wear__bar {
-  background: linear-gradient(135deg, rgba(236, 240, 241, 0.7), rgba(218, 223, 225, 0.6));
-  border-radius: 1.2vh;
+  background: rgba(255, 0, 0, 0.2); /* Красный фон полосы */
+  border-radius: 1vh;
   width: 100%;
   left: 1.5vh;
   bottom: 1vh;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 #app .inventory-capacity__bar__fill,
 #app .inventory-wear__bar__fill {
-  border-radius: 1.2vh;
-  background: linear-gradient(90deg, #3498db, #2ecc71) !important;
-  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+  border-radius: 1vh;
+  background: linear-gradient(90deg, #ff4d4d, #ff0000, #ff4d4d) !important; /* Красный заполнитель полосы с градиентом */
+  animation: barFillGlow 2s ease-in-out infinite alternate;
 }
-
-/* ---------- Дополнительные эффекты ---------- */
-#app * {
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-#app .hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25) !important;
-}
-
-#app .pulse {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
-}
-
-/* ---------- Глобальные стили для текста ---------- */
-#app,
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* ---------- Темизация для различных элементов ---------- */
-.success-element {
-  background: linear-gradient(145deg, rgba(46, 204, 113, 0.9), rgba(39, 174, 96, 0.8)) !important;
-  color: #ffffff !important;
-}
-
-.warning-element {
-  background: linear-gradient(145deg, rgba(241, 196, 15, 0.9), rgba(243, 156, 18, 0.8)) !important;
-  color: #ffffff !important;
-}
-
-.danger-element {
-  background: linear-gradient(145deg, rgba(231, 76, 60, 0.9), rgba(192, 57, 43, 0.8)) !important;
-  color: #ffffff !important;
-}
-
-.info-element {
-  background: linear-gradient(145deg, rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.8)) !important;
-  color: #ffffff !important;
+@keyframes barFillGlow {
+  from { box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.5); }
+  to { box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.8); }
 }
   #app .capture-table {
     background: #00000061;

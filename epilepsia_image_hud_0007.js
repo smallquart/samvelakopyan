@@ -538,7 +538,7 @@ body .info-card__data {
 }
 body .info-card .text { color: #ffffff !important; } /* Белый текст */
 
-/* ---------- Радиальное меню (player-interaction) — СТИЛИЗОВАНО ---------- */
+/* ---------- Радиальное меню (player-interaction) — СТИЛИЗОВАНО БЕЗ АНИМАЦИЙ ---------- */
 #app .player-interaction__icon,
 #app .player-interaction__icon_active {
   fill: #000000 !important; /* Черная иконка */
@@ -547,30 +547,18 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
 
 #app .player-interaction__icon:hover {
   fill: #ffffff !important; /* Белая иконка при наведении */
-  animation: iconGlow 0.5s ease-in-out infinite alternate;
-}
-
-@keyframes iconGlow {
-  from { filter: drop-shadow(0 0 5px #ffffff); }
-  to { filter: drop-shadow(0 0 15px #ffffff); }
 }
 
 #app .player-interaction__title,
 #app .player-interaction__title_active {
   color: #000000 !important; /* Черный текст */
   transition: all 0.3s ease;
-  animation: titleFloat 3s ease-in-out infinite;
 }
 
 #app .player-interaction__title:hover,
 #app .player-interaction__title_active:hover {
   color: #ffffff !important; /* Белый текст при наведении */
   text-shadow: 0 0 10px #ffffff;
-}
-
-@keyframes titleFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
 }
 
 #app .player-interaction__container,
@@ -581,12 +569,6 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
   border-radius: 50%;
   position: relative;
   overflow: hidden;
-  animation: menuRotate 10s linear infinite;
-}
-
-@keyframes menuRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 #app .player-interaction__container::before {
@@ -599,24 +581,12 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
   background: linear-gradient(45deg, #000000, #ffffff, #000000, #ffffff);
   z-index: -1;
   border-radius: 50%;
-  animation: borderRotate 4s linear infinite;
-}
-
-@keyframes borderRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 #app .player-interaction__inner {
   background: linear-gradient(145deg, #f0f0f0, #ffffff, #f0f0f0) !important; /* Светло-белый градиент */
   border: .09vh solid rgba(0, 0, 0, 0.2) !important; /* Черная граница */
   border-radius: 50%;
-  animation: innerPulse 2s ease-in-out infinite alternate;
-}
-
-@keyframes innerPulse {
-  from { box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); }
-  to { box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2); }
 }
 
 /* ---------- Торговля ---------- */

@@ -24,13 +24,10 @@ function AddHud() {
             notificationElement.style.fontFamily = 'Arial, sans-serif';
             notificationElement.style.minWidth = '250px';
             notificationElement.style.textAlign = 'left';
-            // Изначально скрываем уведомление
-            notificationElement.style.display = 'none';
             document.body.appendChild(notificationElement);
         }
 
         notificationElement.textContent = message;
-        notificationElement.style.display = 'block'; // Показываем при установке текста
 
         setTimeout(() => {
             if (notificationElement && notificationElement.parentNode) {
@@ -407,22 +404,30 @@ function AddHud() {
 #app .fuel__container,
 body .info-card,
 body .info-card__data {
-  background: rgba(255, 255, 255, 0.6) !important; /* Белый с 60% прозрачности */
-  border-radius: 1.1vh;
-  color: #000000 !important; /* Черный текст */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85), rgba(240, 240, 240, 0.7)) !important;
+  border-radius: 1.8vh;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #2c3e50 !important;
 }
 
 /* ---------- Топливное меню ---------- */
 #app .fuel__button .text:before {
-  background: url("image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTEuNDUxIDFMNC40ODQgNy44NDhMMSA0LjQyNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==") center/contain no-repeat !important; /* Изменен цвет иконки на черный */
+  background: url("image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTEuNDUxIDFMNC40ODQgNy44NDhMMSA0LjQyNCIgc3Ryb2tlPSIjMmMzZTUwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==") center/contain no-repeat !important;
 }
 #app .fuel__container:before { opacity: 0; }
 #app .fuel__container { padding: 3.33vh 2.96vh; }
 #app .fuel__title {
   font-size: 2.04vh;
   line-height: 1.94vh;
-  color: #000000 !important; /* Черный текст */
+  color: #2c3e50 !important;
   text-align: left;
+  font-weight: 600;
+  background: linear-gradient(90deg, #2c3e50, #7f8c8d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 #app .fuel__close {
   left: auto !important;
@@ -433,28 +438,33 @@ body .info-card__data {
   gap: .5vh;
 }
 #app .fuel__close:hover img {
-  filter: drop-shadow(0 0 8px #00000080) !important; /* Темная тень при наведении */
+  filter: drop-shadow(0 0 8px rgba(44, 62, 80, 0.4)) !important;
 }
 #app .fuel__fill .range-slider-fill,
 #app .fuel__fill .range-slider-knob {
-  background-color: rgba(255, 255, 255, 0.9) !important; /* Белый акцент */
+  background: linear-gradient(90deg, #3498db, #2ecc71) !important;
 }
-#app .fuel__fill-data .text { color: hsla(0, 0%, 10%, 0.75) !important; } /* Темно-серый текст */
-#app .fuel__fill-data .value { color: #000000 !important; } /* Черный текст */
+#app .fuel__fill-data .text { color: #7f8c8d !important; }
+#app .fuel__fill-data .value { color: #2c3e50 !important; }
 
 #app .fuel__class-col.selected,
 #app .fuel__class-col:hover {
-  background: rgba(255, 255, 255, 0.9) !important; /* Белый акцент */
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2) !important; /* Тень для контраста */
-  color: #000000 !important; /* Черный текст */
+  background: linear-gradient(145deg, rgba(52, 152, 219, 0.8), rgba(46, 204, 113, 0.6)) !important;
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
 #app .fuel__button {
-  background: linear-gradient(185.93deg, rgba(255, 255, 255, 0.8) -22.13%, rgba(255, 255, 255, 0.6) 122.51%) !important; /* Градиент из белых оттенков */
-  color: #000000 !important; /* Черный текст */
+  background: linear-gradient(185.93deg, rgba(52, 152, 219, 0.85) -22.13%, rgba(46, 204, 113, 0.6) 122.51%) !important;
+  color: #ffffff !important;
+  border-radius: 1.5vh;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 #app .fuel__button:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important; /* Тень для контраста */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-2px);
 }
 
 /* ---------- Экран "без сознания" ---------- */
@@ -465,109 +475,129 @@ body .info-card__data {
 }
 #app .death,
 #app .death-timer {
-  background: rgba(255, 255, 255, 0.85) !important; /* Более непрозрачный белый фон */
+  background: linear-gradient(135deg, rgba(231, 76, 60, 0.85), rgba(192, 57, 43, 0.7)) !important;
   font-style: italic;
-  color: #333333 !important; /* Темно-серый текст */
+  color: #ffffff !important;
+  border-radius: 2vh;
+  box-shadow: 0 8px 32px rgba(231, 76, 60, 0.2);
 }
 
 /* ---------- Информационные карточки ---------- */
 body .info-card,
 body .info-card__data {
-  background: rgba(255, 255, 255, 0.6); /* Белый фон */
-  border-radius: 31px !important;
-  color: #000000 !important; /* Черный текст */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8));
+  border-radius: 2.5vh !important;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #2c3e50 !important;
+  padding: 1.5vh;
+  transition: all 0.3s ease;
 }
-body .info-card .text { color: #000000 !important; } /* Черный текст */
+body .info-card:hover,
+body .info-card__data:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+}
+body .info-card .text { color: #34495e !important; }
 
 /* ---------- Радиальное меню (player-interaction) — ИСПРАВЛЕНО ---------- */
 #app .player-interaction__icon,
 #app .player-interaction__icon_active {
-  fill: #000000 !important; /* Черная иконка */
+  fill: #2c3e50 !important;
+  transition: all 0.3s ease;
 }
 
 #app .player-interaction__title,
 #app .player-interaction__title_active {
-  color: #000000 !important; /* Черный заголовок */
+  color: #2c3e50 !important;
+  font-weight: 600;
 }
 
 #app .player-interaction__container,
 #app .player-interaction-layer {
-  background: rgba(255, 255, 255, 0.8); /* Белый фон */
-  border: none;
-  box-shadow: none !important; /* Убрана тень */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2) !important;
+  backdrop-filter: blur(8px);
 }
 
 #app .player-interaction__inner {
-  background: rgba(255, 255, 255, 0.5); /* Светлый фон */
-  border: .09vh solid rgba(255, 255, 255, 0.2); /* Белая граница */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(240, 240, 240, 0.4));
+  border: .09vh solid rgba(255, 255, 255, 0.3);
 }
 
-/* Убираем SVG фон и текстуру */
 #app .player-interaction__container {
-  background-image: none !important; /* Убран SVG фон */
+  background-image: none !important;
 }
-/* Убираем PNG текстуру */
 #app .player-interaction__container:before {
-  content: none !important; /* Полностью убрана текстура */
+  content: none !important;
 }
 
 /* ---------- Торговля ---------- */
 #app .trade-items { background: none; }
 #app .trade-items__container {
-  border-radius: 10px;
+  border-radius: 1.8vh;
   height: 613px;
   width: 1283px;
-  background: rgba(255, 255, 255, 0.85) !important; /* Светлый белый фон */
-  color: #000000 !important; /* Черный текст */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8)) !important;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #2c3e50 !important;
 }
 #app .trade-items-main { right: -1.2vw; top: -2vh; }
 
 /* ---------- Чат RADMIR ---------- */
 #app .radmir-chat-input__input input::selection { 
-    background-color: rgba(255, 255, 255, 0.3); 
-} /* Выделение текста в темном стиле */
+    background-color: rgba(52, 152, 219, 0.3); 
+}
 
 #app .radmir-chat__before {
     position: fixed;
     width: 100vw;
     height: 41.66vw;
-    background: none !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(240, 240, 240, 0.05));
     left: 0; 
     top: 0; 
     z-index: -1;
-    opacity: 0;
+    opacity: 0.5;
     transition: all .2s ease;
     pointer-events: none;
 }
 
 #app .radmir-chat-input__input {
-    background: rgba(0, 0, 0, 1) !important; /* Светлый фон */
-    border-radius: 11px !important; /* Более острые углы */
-    color: #ffffffff !important; /* Черный текст ввода */
-    border: 3px solid #ffffffff !important; /* Черная обводка */
+    background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(33, 46, 64, 0.8)) !important;
+    border-radius: 1.2vh !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 #app .radmir-chat-input__input input { 
     margin-left: .9vh !important; 
-    color: #ffffffff !important; 
-} /* Черный текст ввода */
-
+    color: #ffffff !important; 
+}
 #app .radmir-chat-input__input-lang { 
     margin-right: 1vh !important; 
 }
-
 #app .controls-button { 
-    border-radius: 2px; /* Более острые углы */
+    border-radius: 1.2vh;
+    background: linear-gradient(145deg, rgba(52, 152, 219, 0.8), rgba(41, 128, 185, 0.7));
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 /* ---------- Модальные окна ---------- */
 #app .modal-container-wrapper {
-  background: rgba(255, 255, 255, 0.85) !important; /* Светлый белый фон */
-  border: 0.19vh solid rgba(255, 255, 255, 0.1); /* Белая граница */
-  border-radius: 2.5vh !important;
-  box-shadow: none !important; /* Убрана тень */
-  color: #000000 !important; /* Черный текст */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.85)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2.8vh !important;
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25) !important;
+  backdrop-filter: blur(6px);
+  color: #2c3e50 !important;
+  transition: all 0.3s ease;
 }
-#app .modal-overlay { background: none !important; }
+#app .modal-overlay { background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)) !important; }
 #app .modal_violet .modal-container,
 #app .modal_orange .modal-container,
 #app .modal_green .modal-container,
@@ -579,28 +609,47 @@ body .info-card .text { color: #000000 !important; } /* Черный текст 
 /* ---------- Окна (window) ---------- */
 body .window-bg,
 body .window__before { background-image: none; }
-body .window__title { text-align: center; color: #000000 !important; } /* Черный заголовок */
+body .window__title { 
+  text-align: center; 
+  color: #2c3e50 !important; 
+  font-weight: 700;
+  background: linear-gradient(90deg, #2c3e50, #34495e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 body .window-table__item {
-  color: #000000 !important; /* Черный текст */
-  border-radius: 2vh;
+  color: #2c3e50 !important;
+  border-radius: 1.5vh;
   border: .09vh solid transparent;
-  transition: .25s;
-  background: rgba(255, 255, 255, 0.3); /* Белый фон элемента */
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(240, 240, 240, 0.6));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 body .window-table__item.selected {
-  background: rgba(255, 255, 255, 0.9) !important; /* Белый акцент */
-  color: #000000 !important; /* Черный текст */
+  background: linear-gradient(145deg, rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.8)) !important;
+  color: #ffffff !important;
   border: .09vh solid transparent;
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
 }
-body .window-table__item:hover { background: rgba(215, 215, 215, 0.4); } /* Темнее при наведении для контраста */
+body .window-table__item:hover { 
+  background: linear-gradient(145deg, rgba(236, 240, 241, 0.8), rgba(218, 223, 225, 0.7)); 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
 body .window-button {
-  border-radius: 2vh;
-  color: #000000 !important; /* Черный текст */
-  background: rgba(255, 255, 255, 0.4); /* Белый фон кнопки */
+  border-radius: 1.5vh;
+  color: #ffffff !important;
+  background: linear-gradient(145deg, rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+  transition: all 0.3s ease;
 }
 #app .window-button:hover {
-  color: #000000 !important; /* Черный текст */
-  background: rgba(255, 255, 255, 0.9) !important; /* Белый акцент */
+  color: #ffffff !important;
+  background: linear-gradient(145deg, rgba(41, 128, 185, 0.9), rgba(30, 100, 160, 0.8)) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
 }
 
 /* ---------- Инвентарь ---------- */
@@ -609,10 +658,13 @@ body .window-button {
 #app .inventory-extra__container,
 #app .inventory-main,
 #app .inventory-action__modal {
-  background: rgba(255, 255, 255, 0.8); /* Белый фон */
-  border-radius: 1.1vh;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8));
+  border-radius: 1.8vh;
   padding: 2vh;
-  color: #000000 !important; /* Черный текст */
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #2c3e50 !important;
 }
 #app .inventory-main__after,
 #app .inventory-main__before { display: none; }
@@ -624,28 +676,84 @@ body .window-button {
 #app .inventory-capacity,
 #app .inventory-container__box,
 #app .inventory-container__slot {
-  border-radius: 1vh;
-  border: .1vh solid rgba(255, 255, 255, 0.2); /* Белая граница */
-  background: radial-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.15) 150%); /* Белый градиент */
+  border-radius: 1.2vh;
+  border: .1vh solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(240, 240, 240, 0.5));
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+#app .inventory-container__slot:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.7));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 #app .inventory-container__slot:before {
-  border-radius: 1vh;
-  border: .1vh solid rgba(255, 255, 255, 0.9) !important; /* Белая граница */
-  background: radial-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.8) 150%); /* Белый градиент */
+  border-radius: 1.2vh;
+  border: .1vh solid rgba(255, 255, 255, 0.9) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(240, 240, 240, 0.6));
 }
 
 #app .inventory-capacity__bar,
 #app .inventory-wear__bar {
-  background: rgba(255, 255, 255, 0.2); /* Белый фон полосы */
-  border-radius: 1vh;
+  background: linear-gradient(135deg, rgba(236, 240, 241, 0.7), rgba(218, 223, 225, 0.6));
+  border-radius: 1.2vh;
   width: 100%;
   left: 1.5vh;
   bottom: 1vh;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 #app .inventory-capacity__bar__fill,
 #app .inventory-wear__bar__fill {
-  border-radius: 1vh;
-  background: rgba(255, 255, 255, 0.9) !important; /* Белый заполнитель полосы */
+  border-radius: 1.2vh;
+  background: linear-gradient(90deg, #3498db, #2ecc71) !important;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+/* ---------- Дополнительные эффекты ---------- */
+#app * {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#app .hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25) !important;
+}
+
+#app .pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
+
+/* ---------- Глобальные стили для текста ---------- */
+#app,
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ---------- Темизация для различных элементов ---------- */
+.success-element {
+  background: linear-gradient(145deg, rgba(46, 204, 113, 0.9), rgba(39, 174, 96, 0.8)) !important;
+  color: #ffffff !important;
+}
+
+.warning-element {
+  background: linear-gradient(145deg, rgba(241, 196, 15, 0.9), rgba(243, 156, 18, 0.8)) !important;
+  color: #ffffff !important;
+}
+
+.danger-element {
+  background: linear-gradient(145deg, rgba(231, 76, 60, 0.9), rgba(192, 57, 43, 0.8)) !important;
+  color: #ffffff !important;
+}
+
+.info-element {
+  background: linear-gradient(145deg, rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.8)) !important;
+  color: #ffffff !important;
 }
   #app .capture-table {
     background: #00000061;
@@ -729,8 +837,6 @@ body .window-button {
       document.head.appendChild(hudStyleElement);
       const hudElement = document.createElement("div");
       hudElement.id = 'OldHudContainer';
-      // Изначально скрываем HUD
-      hudElement.style.display = 'none';
       hudElement.innerHTML = `
       <div class="Old-Fixed-Hud">
       <div class="Old-Fixed-HudTop">
@@ -791,29 +897,8 @@ body .window-button {
       </div></div>
       `;
       document.body.appendChild(hudElement);
-      hudElements.push(hudElement); // Добавляем именно созданный элемент
+      hudElements.push(OldHudContainer);
     }
-
-    // --- НОВАЯ ФУНКЦИЯ ДЛЯ ПРОВЕРКИ СТАТУСА АВТОРИЗАЦИИ ---
-    function checkAuthStatus() {
-        // ПРЕДПОЛОЖЕНИЕ: Страница после авторизации имеет класс 'authorized' на body
-        // Или что-то вроде #app, либо исчезает класс, например, 'authenticating'
-        // Пожалуйста, адаптируйте селектор в зависимости от реального состояния DOM после авторизации.
-        // Ниже приведён пример для класса 'authorized' на body.
-        const isAuthorized = document.body.classList.contains('authorized');
-
-        // Также проверим, существует ли элемент HUD
-        const hudElement = document.getElementById('OldHudContainer');
-
-        if (isAuthorized && hudElement) {
-            // Если авторизован и HUD существует, отображаем его
-            hudElement.style.display = '';
-            console.log("HUD отображен после авторизации.");
-            // Останавливаем проверку, так как задача выполнена
-            clearInterval(authCheckInterval);
-        }
-    }
-
     const updateFunctions = {
         show: (value) => {
             const hudEl = document.querySelector(".Old-Fixed-Hud");
@@ -1009,10 +1094,8 @@ body .window-button {
             }
         }, 100);
     }
-
-    // --- ИНИЦИАЛИЗАЦИЯ HUD ---
-    createHud();
     initializeHudProxy();
+    createHud();
 
     // Принудительно показать элемент ZZ после создания HUD, если он существует
     const initialZZElement = document.querySelector(".Old-Fixed-ZZ");
@@ -1021,10 +1104,6 @@ body .window-button {
         // Или вызываем функцию greenZone с true, если она должна управлять этим
         // updateFunctions.greenZone(true); // Это также сработает, если функция правильно настроена
     }
-
-    // --- ЗАПУСК ПРОВЕРКИ СТАТУСА АВТОРИЗАЦИИ ---
-    // Проверяем статус авторизации каждые 500 миллисекунд
-    const authCheckInterval = setInterval(checkAuthStatus, 500);
 
     window.onInfoChange = onInfoChange;
     setTimeout(() => {
@@ -1035,9 +1114,6 @@ body .window-button {
         if (hudStyleElement) {
             hudStyleElement.remove();
         }
-        // Очищаем интервал проверки, если HUD был удален до авторизации
-        clearInterval(authCheckInterval);
     });
-}
-// Запуск функции
+  };
 AddHud();

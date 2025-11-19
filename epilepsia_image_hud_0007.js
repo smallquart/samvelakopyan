@@ -369,10 +369,10 @@ function AddHud() {
         top: 20px;
       }
       .Old-Fixed-ZZ{
- position:absolute;
- left:21.3vh;
- bottom: 20vh; /* Исправленное значение */
-}
+       position:absolute;
+       left:21.3vh;
+       bottom:2vh; /* Исправлено: изменено значение bottom */
+      }
       .Old-Fixed-ZZ_icon{
        width:4.5vh;
        height:4.5vh
@@ -943,41 +943,42 @@ body .window-button {
         });
     }
     function initializeHudProxy() {
-    const checkInterval = setInterval(() => {
-        if (typeof window.interface === "function" && window.interface("Hud").info) {
-            clearInterval(checkInterval);
-            const hudInfo = window.interface("Hud").info;
-            const clonedHudInfo = JSON.parse(JSON.stringify(hudInfo));
+        const checkInterval = setInterval(() => {
+            if (typeof window.interface === "function" && window.interface("Hud").info) {
+                clearInterval(checkInterval);
+                const hudInfo = window.interface("Hud").info;
+                const clonedHudInfo = JSON.parse(JSON.stringify(hudInfo));
+                
+                // Инициализировать greenZoneEl после создания DOM
+                let greenZoneEl = document.querySelector(".Old-Fixed-ZZ");
 
-            // Инициализировать greenZoneEl после создания DOM
-            let greenZoneEl = document.querySelector(".Old-Fixed-ZZ");
-
-            window.interface("Hud").info = new Proxy(clonedHudInfo, {
-                set(target, prop, value) {
-                    if (target[prop] !== value) {
-                        target[prop] = value;
-                        onInfoChange(prop, value);
+                window.interface("Hud").info = new Proxy(clonedHudInfo, {
+                    set(target, prop, value) {
+                        if (target[prop] !== value) {
+                            target[prop] = value;
+                            onInfoChange(prop, value);
+                        }
+                        return Reflect.set(target, prop, value);
                     }
-                    return Reflect.set(target, prop, value);
-                }
-            });
-            window.interface("Hud").setServer = (serverId) => {
-                onInfoChange("server", serverId);
-                window.interface("Hud").server = serverId;
-            };
-            window.interface("Hud").setBonus = (bonusValue) => {
-                onInfoChange("bonus", bonusValue);
-                window.interface("Hud").bonus = bonusValue;
-            };
-            // window.interface("Hud").showGreenZoneTab = () => { // Пример добавления метода
-            //     if (greenZoneEl) greenZoneEl.style.display = ""; // Показать
-            // };
-            // window.interface("Hud").hideGreenZoneTab = () => { // Пример добавления метода
-            //     if (greenZoneEl) greenZoneEl.style.display = "none"; // Скрыть
-            // };
-        }
-    }, 100);
-}
+                });
+                window.interface("Hud").setServer = (serverId) => {
+                    onInfoChange("server", serverId);
+                    window.interface("Hud").server = serverId;
+                };
+                window.interface("Hud").setBonus = (bonusValue) => {
+                    onInfoChange("bonus", bonusValue);
+                    window.interface("Hud").bonus = bonusValue;
+                };
+                
+                // window.interface("Hud").showGreenZoneTab = () => { // Пример добавления метода
+                //     if (greenZoneEl) greenZoneEl.style.display = ""; // Показать
+                // };
+                // window.interface("Hud").hideGreenZoneTab = () => { // Пример добавления метода
+                //     if (greenZoneEl) greenZoneEl.style.display = "none"; // Скрыть
+                // };
+            }
+        }, 100);
+    }
     initializeHudProxy();
     createHud();
     window.onInfoChange = onInfoChange;

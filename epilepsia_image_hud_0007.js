@@ -409,6 +409,7 @@ body .info-card__data {
   color: #ffffff !important; /* Белый текст */
   position: relative;
   overflow: hidden;
+  box-shadow: none !important;
 }
 
 #app .container::before,
@@ -462,7 +463,7 @@ body .info-card__:before {
   gap: .5vh;
 }
 #app .fuel__close:hover img {
-  filter: drop-shadow(0 0 8px #ffffff) !important; /* Белая тень при наведении */
+  filter: drop-shadow(0 0 0px #ffffff) !important; /* Убрана тень при наведении */
   animation: pulse 1s infinite;
 }
 @keyframes pulse {
@@ -480,13 +481,13 @@ body .info-card__:before {
 #app .fuel__class-col.selected,
 #app .fuel__class-col:hover {
   background: linear-gradient(145deg, #ffffff, #000000, #ffffff) !important; /* Черно-белый градиент */
-  box-shadow: 0 12px 22px rgba(255, 255, 255, 0.4) !important; /* Белая тень для контраста */
+  box-shadow: none !important; /* Убрана тень для контраста */
   color: #000000 !important; /* Черный текст */
   animation: buttonGlow 1.5s ease-in-out infinite alternate;
 }
 @keyframes buttonGlow {
-  from { box-shadow: 0 12px 22px rgba(255, 255, 255, 0.4); }
-  to { box-shadow: 0 12px 30px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); }
+  from { box-shadow: none; }
+  to { box-shadow: none; }
 }
 
 #app .fuel__button {
@@ -494,15 +495,16 @@ body .info-card__:before {
   color: #ffffff !important; /* Белый текст */
   border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
+  box-shadow: none !important;
 }
 #app .fuel__button:hover {
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5) !important; /* Белая тень для контраста */
+  box-shadow: none !important; /* Убрана тень для контраста */
   transform: translateY(-2px);
   animation: buttonHoverGlow 0.5s ease-in-out infinite alternate;
 }
 @keyframes buttonHoverGlow {
-  from { box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5); }
-  to { box-shadow: 0 6px 30px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); }
+  from { box-shadow: none; }
+  to { box-shadow: none; }
 }
 
 /* ---------- Экран "без сознания" ---------- */
@@ -519,8 +521,8 @@ body .info-card__:before {
   animation: deathGlow 3s ease-in-out infinite alternate;
 }
 @keyframes deathGlow {
-  from { text-shadow: 0 0 10px #ffffff; }
-  to { text-shadow: 0 0 30px #ffffff, 0 0 40px #ffffff; }
+  from { text-shadow: 0 0 0px #ffffff; }
+  to { text-shadow: 0 0 0px #ffffff, 0 0 0px #ffffff; }
 }
 
 /* ---------- Информационные карточки ---------- */
@@ -531,6 +533,7 @@ body .info-card__data {
   color: #ffffff !important; /* Белый текст */
   border: 1px solid rgba(255, 255, 255, 0.2);
   animation: cardFloat 4s ease-in-out infinite;
+  box-shadow: none !important;
 }
 @keyframes cardFloat {
   0%, 100% { transform: translateY(0); }
@@ -538,55 +541,36 @@ body .info-card__data {
 }
 body .info-card .text { color: #ffffff !important; } /* Белый текст */
 
-/* ---------- Радиальное меню (player-interaction) — СТИЛИЗОВАНО БЕЗ АНИМАЦИЙ ---------- */
+/* ---------- Радиальное меню (player-interaction) — ИСПРАВЛЕНО ---------- */
 #app .player-interaction__icon,
 #app .player-interaction__icon_active {
   fill: #000000 !important; /* Черная иконка */
-  transition: all 0.3s ease;
-}
-
-#app .player-interaction__icon:hover {
-  fill: #ffffff !important; /* Белая иконка при наведении */
 }
 
 #app .player-interaction__title,
 #app .player-interaction__title_active {
-  color: #000000 !important; /* Черный текст */
-  transition: all 0.3s ease;
-}
-
-#app .player-interaction__title:hover,
-#app .player-interaction__title_active:hover {
-  color: #ffffff !important; /* Белый текст при наведении */
-  text-shadow: 0 0 10px #ffffff;
+  color: #000000 !important; /* Черный заголовок */
 }
 
 #app .player-interaction__container,
 #app .player-interaction-layer {
-  background: linear-gradient(145deg, #ffffff, #cccccc, #ffffff) !important; /* Бело-серый градиент */
+  background: rgba(255, 255, 255, 0.8); /* Белый фон */
   border: none;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3) !important; /* Черная тень */
-  border-radius: 50%;
-  position: relative;
-  overflow: hidden;
-}
-
-#app .player-interaction__container::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #000000, #ffffff, #000000, #ffffff);
-  z-index: -1;
-  border-radius: 50%;
+  box-shadow: none !important; /* Убрана тень */
 }
 
 #app .player-interaction__inner {
-  background: linear-gradient(145deg, #f0f0f0, #ffffff, #f0f0f0) !important; /* Светло-белый градиент */
-  border: .09vh solid rgba(0, 0, 0, 0.2) !important; /* Черная граница */
-  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5); /* Светлый фон */
+  border: .09vh solid rgba(255, 255, 255, 0.2); /* Белая граница */
+}
+
+/* Убираем SVG фон и текстуру */
+#app .player-interaction__container {
+  background-image: none !important; /* Убран SVG фон */
+}
+/* Убираем PNG текстуру */
+#app .player-interaction__container:before {
+  content: none !important; /* Полностью убрана текстура */
 }
 
 /* ---------- Торговля ---------- */
@@ -598,10 +582,11 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
   background: linear-gradient(145deg, #000000, #1a1a1a, #000000) !important; /* Черно-серый градиент */
   color: #ffffff !important; /* Белый текст */
   animation: tradeContainerGlow 5s ease-in-out infinite alternate;
+  box-shadow: none !important;
 }
 @keyframes tradeContainerGlow {
-  from { box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1); }
-  to { box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1); }
+  from { box-shadow: none; }
+  to { box-shadow: none; }
 }
 #app .trade-items-main { right: -1.2vw; top: -2vh; }
 
@@ -629,11 +614,12 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
     color: #ffffff !important; /* Белый текст ввода */
     border: 3px solid rgba(255, 255, 255, 0.3) !important; /* Белая обводка */
     transition: all 0.3s ease;
+    box-shadow: none !important;
 }
 
 #app .radmir-chat-input__input:hover {
     border-color: rgba(255, 255, 255, 0.6) !important;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    box-shadow: none !important;
 }
 
 #app .radmir-chat-input__input input { 
@@ -651,15 +637,16 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
     color: #ffffff !important; /* Белый текст */
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
+    box-shadow: none !important;
 }
 #app .controls-button:hover {
     background: linear-gradient(145deg, #1a1a1a, #000000, #1a1a1a) !important; /* Обратный градиент при наведении */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    box-shadow: none !important;
     animation: controlButtonGlow 1s ease-in-out infinite alternate;
 }
 @keyframes controlButtonGlow {
-  from { box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); }
-  to { box-shadow: 0 0 25px rgba(255, 255, 255, 0.3); }
+  from { box-shadow: none; }
+  to { box-shadow: none; }
 }
 
 /* ---------- Модальные окна ---------- */
@@ -667,13 +654,13 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
   background: linear-gradient(145deg, #000000, #1a1a1a, #000000) !important; /* Черно-серый градиент */
   border: 0.19vh solid rgba(255, 255, 255, 0.2); /* Белая граница */
   border-radius: 2.5vh !important;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) !important; /* Белая тень */
+  box-shadow: none !important; /* Убрана тень */
   color: #ffffff !important; /* Белый текст */
   animation: modalGlow 4s ease-in-out infinite alternate;
 }
 @keyframes modalGlow {
-  from { box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
-  to { box-shadow: 0 0 40px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2); }
+  from { box-shadow: none; }
+  to { box-shadow: none; }
 }
 #app .modal-overlay { background: none !important; }
 #app .modal_violet .modal-container,
@@ -682,6 +669,7 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
 #app .modal_red .modal-container,
 #app .modal_dark-orange .modal-container {
   border-top: none !important;
+  box-shadow: none !important;
 }
 
 /* ---------- Окна (window) ---------- */
@@ -693,8 +681,8 @@ body .window__title {
   animation: titleGlow 2s ease-in-out infinite alternate;
 } /* Белый заголовок с анимацией */
 @keyframes titleGlow {
-  from { text-shadow: 0 0 5px #ffffff; }
-  to { text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff; }
+  from { text-shadow: 0 0 0px #ffffff; }
+  to { text-shadow: 0 0 0px #ffffff, 0 0 0px #ffffff; }
 }
 body .window-table__item {
   color: #ffffff !important; /* Белый текст */
@@ -703,6 +691,7 @@ body .window-table__item {
   transition: .25s;
   background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(26, 26, 26, 0.3), rgba(0, 0, 0, 0.3)) !important; /* Черно-серый градиент */
   animation: itemFloat 6s ease-in-out infinite;
+  box-shadow: none !important;
 }
 @keyframes itemFloat {
   0%, 100% { transform: translateY(0); }
@@ -715,19 +704,21 @@ body .window-table__item.selected {
   color: #000000 !important; /* Черный текст */
   border: .09vh solid rgba(255, 255, 255, 0.5);
   animation: selectedItemGlow 1.5s ease-in-out infinite alternate;
+  box-shadow: none !important;
 }
 @keyframes selectedItemGlow {
-  from { box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
-  to { box-shadow: 0 0 25px rgba(255, 255, 255, 0.4); }
+  from { box-shadow: none; }
+  to { box-shadow: none; }
 }
 body .window-table__item:hover { 
   background: linear-gradient(145deg, rgba(50, 50, 50, 0.4), rgba(0, 0, 0, 0.4), rgba(50, 50, 50, 0.4)) !important; /* Темно-серый градиент */
   transform: scale(1.02);
   animation: itemHoverGlow 0.5s ease-in-out infinite alternate;
+  box-shadow: none !important;
 } /* Темнее при наведении для контраста */
 @keyframes itemHoverGlow {
-  from { box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); }
-  to { box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
+  from { box-shadow: none; }
+  to { box-shadow: none; }
 }
 body .window-button {
   border-radius: 2vh;
@@ -735,6 +726,7 @@ body .window-button {
   background: linear-gradient(145deg, rgba(0, 0, 0, 0.4), rgba(26, 26, 26, 0.4), rgba(0, 0, 0, 0.4)) !important; /* Черно-серый градиент */
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
+  box-shadow: none !important;
 }
 #app .window-button:hover {
   color: #000000 !important; /* Черный текст */
@@ -742,10 +734,11 @@ body .window-button {
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
   animation: buttonHoverGlowWindow 0.5s ease-in-out infinite alternate;
+  box-shadow: none !important;
 }
 @keyframes buttonHoverGlowWindow {
-  from { box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
-  to { box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4); }
+  from { box-shadow: none; }
+  to { box-shadow: none; }
 }
 
 /* ---------- Инвентарь ---------- */
@@ -759,6 +752,7 @@ body .window-button {
   padding: 2vh;
   color: #ffffff !important; /* Белый текст */
   animation: inventoryFloat 5s ease-in-out infinite;
+  box-shadow: none !important;
 }
 @keyframes inventoryFloat {
   0%, 100% { transform: translateY(0); }
@@ -778,15 +772,16 @@ body .window-button {
   border: .1vh solid rgba(255, 255, 255, 0.2); /* Белая граница */
   background: radial-gradient(circle at center, rgba(0, 0, 0, 0.6), rgba(26, 26, 26, 0.6) 150%); /* Черно-серый градиент */
   transition: all 0.3s ease;
+  box-shadow: none !important;
 }
 #app .inventory-container__slot:hover {
   border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
   animation: slotHoverGlow 0.5s ease-in-out infinite alternate;
 }
 @keyframes slotHoverGlow {
-  from { box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); }
-  to { box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
+  from { box-shadow: none; }
+  to { box-shadow: none; }
 }
 #app .inventory-container__slot:before {
   border-radius: 1vh;
@@ -807,10 +802,11 @@ body .window-button {
   border-radius: 1vh;
   background: linear-gradient(90deg, #ffffff, #e0e0e0, #ffffff) !important; /* Белый заполнитель полосы с градиентом */
   animation: barFillGlow 2s ease-in-out infinite alternate;
+  box-shadow: none !important;
 }
 @keyframes barFillGlow {
-  from { box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.3); }
-  to { box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.6); }
+  from { box-shadow: none; }
+  to { box-shadow: none; }
 }
   #app .capture-table {
     background: #00000061;

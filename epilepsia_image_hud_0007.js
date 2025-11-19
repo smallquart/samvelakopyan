@@ -390,7 +390,32 @@ function AddHud() {
         left: 11.1620vh;
         bottom: 2.7778vh;
       }
-      #app .hud-radmir-radar__map { width: 26.3vh !important; height: 16.9vh !important; overflow: hidden; display: flex; justify-content: center; align-items: center; border-radius: 1.7vh; border: 0.55vh solid #ffffffff !important } body #app .hud-radmir-radar__map { transition: .3s } #app .hud-hassle-map { width: 32vh !important; height: 32vh !important } #app .hud-radmir-radar__radar { width: 26.3vh; border-radius: 2vh } #app .hud-radmir-radar { left: 7.3vh; bottom: 4.03vh }
+      #app .hud-radmir-radar__map { 
+  width: 21.9vh !important; 
+  height: 20.9vh !important; 
+  overflow: hidden; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  border-radius: 0; 
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+body #app .hud-radmir-radar__map { 
+  transition: .3s 
+}
+#app .hud-hassle-map { 
+  width: 32vh !important; 
+  height: 32vh !important 
+}
+#app .hud-radmir-radar__radar { 
+  width: 26.3vh; 
+  border-radius: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+#app .hud-radmir-radar { 
+  left: 7.2vh 
+}
       body .OLD-RADMIR-logo__bonus {
     background: #000000c5
 }
@@ -554,13 +579,13 @@ body .info-card .text { color: #ffffff !important; } /* Белый текст */
 
 #app .player-interaction__container,
 #app .player-interaction-layer {
-  background: rgba(255, 255, 255, 0.8); /* Белый фон */
+  background: linear-gradient(145deg, rgba(50, 50, 50, 0.4), rgba(0, 0, 0, 0.4), rgba(50, 50, 50, 0.4)) !important; /* Белый фон */
   border: none;
   box-shadow: none !important; /* Убрана тень */
 }
 
 #app .player-interaction__inner {
-  background: rgba(255, 255, 255, 0.5); /* Светлый фон */
+  background: linear-gradient(145deg, rgba(50, 50, 50, 0.4), rgba(0, 0, 0, 0.4), rgba(50, 50, 50, 0.4)) !important; /* Светлый фон */
   border: .09vh solid rgba(255, 255, 255, 0.2); /* Белая граница */
 }
 

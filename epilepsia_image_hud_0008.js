@@ -399,7 +399,7 @@ function AddHud() {
   align-items: center; 
   border-radius: 100%; 
   border: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(106, 119, 163, 0.3);
+  box-shadow: 0 7px 23px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
   position: relative;
   overflow: hidden;
 }

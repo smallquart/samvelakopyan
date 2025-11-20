@@ -390,37 +390,44 @@ function AddHud() {
         left: 11.1620vh;
         bottom: 2.7778vh;
       }
-      #app .hud-radmir-radar__map { 
-  width: 21.9vh !important; 
-  height: 20.9vh !important; 
-  overflow: hidden; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  border-radius: 0; 
+      /* ---------- Radar Map ---------- */
+#app .hud-radmir-radar__map {
+  width: 21.9vh !important;
+  height: 20.9vh !important;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
   border: none !important;
-  box-shadow: 0 5px 25px rgba(139, 195, 221, 0.81); /* Ледяная тень */
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
-body #app .hud-radmir-radar__map { 
-  transition: .3s 
+
+body #app .hud-radmir-radar__map {
+  transition: .3s;
 }
-#app .hud-hassle-map { 
-  width: 32vh !important; 
-  height: 32vh !important 
+
+#app .hud-hassle-map {
+  width: 32vh !important;
+  height: 32vh !important;
 }
-#app .hud-radmir-radar__radar { 
-  width: 26.3vh; 
+
+#app .hud-radmir-radar__radar {
+  width: 26.3vh;
   border-radius: 0;
   box-shadow: none;
 }
-#app .hud-radmir-radar { 
-  left: 7.2vh 
-}
-      body .OLD-RADMIR-logo__bonus {
-    background: #000000c5
+
+#app .hud-radmir-radar {
+  left: 7.2vh;
 }
 
-/* ---------- Общие настройки интерфейса ---------- */
+body .OLD-RADMIR-logo__bonus {
+  background: #000000c5;
+}
+
+/* ---------- General UI Containers (Black-Gray Gradient) ---------- */
 #app .container,
 #app .inventory-extra__container,
 #app .inventory-main,
@@ -429,14 +436,17 @@ body #app .hud-radmir-radar__map {
 #app .fuel__container,
 body .info-card,
 body .info-card__data {
-  background: linear-gradient(145deg, #2196f3, #1976d2, #0d47a1) !important; /* Зимний синий градиент */
-  border-radius: 1.1vh;
-  color: #e0f7fa !important; /* Светло-голубой текст */
+  background: linear-gradient(145deg, #2a2a2a 0%, #353535 25%, #2a2a2a 50%, #303030 100%);
+  border-radius: 4px;
+  color: #e0e0e0 !important;
   position: relative;
   overflow: hidden;
-  box-shadow: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  border: 1px solid #404040;
+  position: relative;
 }
 
+/* Add subtle gradient overlay effect */
 #app .container::before,
 #app .inventory-extra__container::before,
 #app .inventory-main::before,
@@ -444,41 +454,53 @@ body .info-card__data {
 #app .modal-container-wrapper::before,
 #app .fuel__container::before,
 body .info-card::before,
-body .info-card__:before {
+body .info-card__data::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(224, 247, 250, 0.1) 0%, transparent 70%); /* Светло-голубой радиальный градиент */
-  animation: gradientRotate 8s linear infinite;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
   pointer-events: none;
-  z-index: -1;
+  border-radius: 4px;
 }
 
-@keyframes gradientRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* ---------- Топливное меню ---------- */
+/* ---------- Fuel Menu ---------- */
 #app .fuel__button .text:before {
-  background: url("image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTEuNDUxIDFMNC40ODQgNy44NDhMMSA0LjQyNCIgc3Ryb2tlPSIjZTBmN2ZhIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==") center/contain no-repeat !important; /* Светло-голубой цвет иконки */
+  background: url("image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTEuNDUxIDFMNC40ODQgNy44NDhMMSA0LjQyNCIgc3Ryb2tlPSIjZTBmN2ZhIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==") center/contain no-repeat !important;
+  opacity: 0.7;
 }
-#app .fuel__container:before { opacity: 0; }
-#app .fuel__container { padding: 3.33vh 2.96vh; }
+
+#app .fuel__container {
+  background: linear-gradient(145deg, #2a2a2a 0%, #353535 25%, #2a2a2a 50%, #303030 100%);
+  padding: 3.33vh 2.96vh;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  border: 1px solid #404040;
+  position: relative;
+}
+
+#app .fuel__container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+  pointer-events: none;
+  border-radius: 4px;
+}
+
 #app .fuel__title {
   font-size: 2.04vh;
   line-height: 1.94vh;
-  color: #e0f7fa !important; /* Светло-голубой текст */
+  color: #e0e0e0 !important;
   text-align: left;
-  animation: textGlow 2s ease-in-out infinite alternate;
+  font-weight: 500;
 }
-@keyframes textGlow {
-  from { text-shadow: 0 0 5px #81d4fa; }
-  to { text-shadow: 0 0 20px #4fc3f7, 0 0 30px #29b6f6; }
-}
+
 #app .fuel__close {
   left: auto !important;
   top: -.5vh !important;
@@ -487,382 +509,453 @@ body .info-card__:before {
   flex-direction: row-reverse;
   gap: .5vh;
 }
+
 #app .fuel__close:hover img {
-  filter: drop-shadow(0 0 8px #81d4fa) !important; /* Ледяная тень при наведении */
-  animation: pulse 1s infinite;
+  filter: brightness(1.2);
 }
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
+
 #app .fuel__fill .range-slider-fill,
 #app .fuel__fill .range-slider-knob {
-  background: linear-gradient(90deg, #2196f3, #e0f7fa, #2196f3) !important; /* Зимний сине-голубой градиент */
+  background: linear-gradient(90deg, #4a4a4a 0%, #666666 100%) !important;
 }
-#app .fuel__fill-data .text { color: #e0f7fa !important; } /* Светло-голубой текст */
-#app .fuel__fill-data .value { color: #e0f7fa !important; } /* Светло-голубой текст */
+
+#app .fuel__fill-data .text,
+#app .fuel__fill-data .value {
+  color: #e0e0e0 !important;
+}
 
 #app .fuel__class-col.selected,
 #app .fuel__class-col:hover {
-  background: linear-gradient(145deg, #e0f7fa, #2196f3, #e0f7fa) !important; /* Зимний голубо-синий градиент */
-  box-shadow: none !important; /* Убрана тень для контраста */
-  color: #000000 !important; /* Черный текст */
-  animation: buttonGlow 1.5s ease-in-out infinite alternate;
-}
-@keyframes buttonGlow {
-  from { box-shadow: none; }
-  to { box-shadow: none; }
+  background: linear-gradient(145deg, #3a3a3a 0%, #454545 50%, #3a3a3a 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid #555555;
 }
 
 #app .fuel__button {
-  background: linear-gradient(185.93deg, rgba(33, 150, 243, 0.9) -22.13%, rgba(224, 247, 250, 0.6) 122.51%) !important; /* Зимний сине-голубой градиент */
-  color: #e0f7fa !important; /* Светло-голубой текст */
-  border: 1px solid rgba(224, 247, 250, 0.3);
-  transition: all 0.3s ease;
-  box-shadow: none !important;
-}
-#app .fuel__button:hover {
-  box-shadow: none !important; /* Убрана тень для контраста */
-  transform: translateY(-2px);
-  animation: buttonHoverGlow 0.5s ease-in-out infinite alternate;
-}
-@keyframes buttonHoverGlow {
-  from { box-shadow: none; }
-  to { box-shadow: none; }
+  background: linear-gradient(145deg, #3a3a3a 0%, #454545 50%, #3a3a3a 100%);
+  color: #e0e0e0 !important;
+  border: 1px solid #4a4a4a;
+  transition: all 0.2s;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* ---------- Экран "без сознания" ---------- */
-#app .death-waves,
-#app .death_mobile .death-bg-lines_danger,
-#app .death_mobile .death-bg-lines {
-  background-image: none;
+#app .fuel__button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.3s;
 }
+
+#app .fuel__button:hover::before {
+  left: 100%;
+}
+
+#app .fuel__button:hover {
+  background: linear-gradient(145deg, #4a4a4a 0%, #555555 50%, #4a4a4a 100%);
+  border-color: #5a5a5a;
+}
+
+/* ---------- Death Screen ---------- */
 #app .death,
 #app .death-timer {
-  background: linear-gradient(145deg, #2196f3, #1976d2, #0d47a1) !important; /* Зимний синий градиент */
+  background: linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1a1a1a 100%);
+  color: #d0d0d0 !important;
   font-style: italic;
-  color: #e0f7fa !important; /* Светло-голубой текст */
-  animation: deathGlow 3s ease-in-out infinite alternate;
-}
-@keyframes deathGlow {
-  from { text-shadow: 0 0 0px #e0f7fa; }
-  to { text-shadow: 0 0 0px #e0f7fa, 0 0 0px #e0f7fa; }
 }
 
-/* ---------- Информационные карточки ---------- */
+/* ---------- Info Cards ---------- */
 body .info-card,
 body .info-card__data {
-  background: linear-gradient(145deg, #2196f3, #1976d2, #0d47a1) !important; /* Зимний синий градиент */
-  border-radius: 31px !important;
-  color: #e0f7fa !important; /* Светло-голубой текст */
-  border: 1px solid rgba(224, 247, 250, 0.2);
-  animation: cardFloat 4s ease-in-out infinite;
-  box-shadow: none !important;
+  background: linear-gradient(145deg, #2a2a2a 0%, #353535 25%, #2a2a2a 50%, #303030 100%);
+  border-radius: 4px;
+  color: #e0e0e0 !important;
+  border: 1px solid #404040;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
-@keyframes cardFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-body .info-card .text { color: #e0f7fa !important; } /* Светло-голубой текст */
 
-/* ---------- Радиальное меню (player-interaction) — ИСПРАВЛЕНО ---------- */
+body .info-card::before,
+body .info-card__data::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+body .info-card .text {
+  color: #e0e0e0 !important;
+}
+
+/* ---------- Radial Menu (player-interaction) - PRESERVED ---------- */
+#app .player-interaction__container,
+#app .player-interaction-layer {
+  background: #2a2a2a;
+  border: 1px solid #4a4a4a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+#app .player-interaction__inner {
+  background: #1e1e1e !important;
+  border: 1px solid #3a3a3a;
+}
+
 #app .player-interaction__icon,
 #app .player-interaction__icon_active {
-  fill: #e0f7fa !important /* Светло-голубая иконка */
+  fill: #e0e0e0 !important;
 }
 
 #app .player-interaction__title,
 #app .player-interaction__title_active {
-  color: #e0f7fa !important; /* Светло-голубой заголовок */
+  color: #e0e0e0 !important;
 }
 
-#app .player-interaction__container,
-#app .player-interaction-layer {
-  background: #2196f3; /* Синий фон */
-  border: none;
-  box-shadow: none !important; /* Убрана тень */
-}
-
-#app .player-interaction__inner {
-  background: #1976d2 !important /* Темно-синий фон */
-  border: .09vh solid #e0f7fa33; /* Светло-голубая граница */
-}
-
-/* Убираем SVG фон и текстуру */
 #app .player-interaction__container {
-  background-image: none !important; /* Убран SVG фон */
-}
-/* Убираем PNG текстуру */
-#app .player-interaction__container:before {
-  content: none !important; /* Полностью убрана текстура */
+  background-image: none !important;
 }
 
-/* ---------- Торговля ---------- */
-#app .trade-items { background: none; }
+#app .player-interaction__container::before {
+  display: none !important;
+}
+
+/* ---------- Trade Window ---------- */
 #app .trade-items__container {
-  border-radius: 10px;
+  border-radius: 4px;
   height: 613px;
   width: 1283px;
-  background: linear-gradient(145deg, #2196f3, #1976d2, #0d47a1) !important; /* Зимний синий градиент */
-  color: #e0f7fa !important; /* Светло-голубой текст */
-  animation: tradeContainerGlow 5s ease-in-out infinite alternate;
-  box-shadow: none !important;
-}
-@keyframes tradeContainerGlow {
-  from { box-shadow: none; }
-  to { box-shadow: none; }
-}
-#app .trade-items-main { right: -1.2vw; top: -2vh; }
-
-/* ---------- Чат RADMIR ---------- */
-#app .radmir-chat-input__input input::selection { 
-    background-color: rgba(224, 247, 250, 0.3); 
-} /* Выделение текста в светло-голубом стиле */
-
-#app .radmir-chat__before {
-    position: fixed;
-    width: 100vw;
-    height: 41.66vw;
-    background: none !important;
-    left: 0; 
-    top: 0; 
-    z-index: -1;
-    opacity: 0;
-    transition: all .2s ease;
-    pointer-events: none;
+  background: linear-gradient(145deg, #2a2a2a 0%, #353535 25%, #2a2a2a 50%, #303030 100%);
+  color: #e0e0e0 !important;
+  border: 1px solid #404040;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
+#app .trade-items__container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+/* ---------- Chat (RADMIR) ---------- */
 #app .radmir-chat-input__input {
-    background: linear-gradient(145deg, #2196f3, #1976d2, #0d47a1) !important; /* Зимний синий градиент */
-    border-radius: 11px !important; /* Более острые углы */
-    color: #e0f7fa !important; /* Светло-голубой текст ввода */
-    border: 3px solid rgba(224, 247, 250, 0.3) !important; /* Светло-голубая обводка */
-    transition: all 0.3s ease;
-    box-shadow: none !important;
+  background: linear-gradient(145deg, #2a2a2a 0%, #353535 25%, #2a2a2a 50%, #303030 100%);
+  border-radius: 4px;
+  color: #e0e0e0 !important;
+  border: 1px solid #404040 !important;
+  transition: all 0.2s;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+#app .radmir-chat-input__input::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  transition: left 0.3s;
+}
+
+#app .radmir-chat-input__input:hover::before {
+  left: 100%;
 }
 
 #app .radmir-chat-input__input:hover {
-    border-color: rgba(224, 247, 250, 0.6) !important;
-    box-shadow: none !important;
+  border-color: #555555 !important;
 }
 
-#app .radmir-chat-input__input input { 
-    margin-left: .9vh !important; 
-    color: #e0f7fa !important; 
-} /* Светло-голубой текст ввода */
-
-#app .radmir-chat-input__input-lang { 
-    margin-right: 1vh !important; 
+#app .radmir-chat-input__input input {
+  margin-left: .9vh !important;
+  color: #e0e0e0 !important;
 }
 
-#app .controls-button { 
-    border-radius: 2px; /* Более острые углы */
-    background: linear-gradient(145deg, #2196f3, #1976d2, #0d47a1) !important; /* Зимний синий градиент */
-    color: #e0f7fa !important; /* Светло-голубой текст */
-    border: 1px solid rgba(224, 247, 250, 0.2);
-    transition: all 0.3s ease;
-    box-shadow: none !important;
-}
-#app .controls-button:hover {
-    background: linear-gradient(145deg, #1976d2, #2196f3, #1976d2) !important; /* Обратный зимний градиент при наведении */
-    box-shadow: none !important;
-    animation: controlButtonGlow 1s ease-in-out infinite alternate;
-}
-@keyframes controlButtonGlow {
-  from { box-shadow: none; }
-  to { box-shadow: none; }
-}
-
-/* ---------- Модальные окна ---------- */
-#app .modal-container-wrapper {
-  background: linear-gradient(145deg, #2196f3, #1976d2, #0d47a1) !important; /* Зимний синий градиент */
-  border: 0.19vh solid rgba(224, 247, 250, 0.2); /* Светло-голубая граница */
-  border-radius: 2.5vh !important;
-  box-shadow: none !important; /* Убрана тень */
-  color: #e0f7fa !important; /* Светло-голубой текст */
-  animation: modalGlow 4s ease-in-out infinite alternate;
-}
-@keyframes modalGlow {
-  from { box-shadow: none; }
-  to { box-shadow: none; }
-}
-#app .modal-overlay { background: none !important; }
-#app .modal_violet .modal-container,
-#app .modal_orange .modal-container,
-#app .modal_green .modal-container,
-#app .modal_red .modal-container,
-#app .modal_dark-orange .modal-container {
-  border-top: none !important;
-  box-shadow: none !important;
-}
-
-/* ---------- Окна (window) ---------- */
-body .window-bg,
-body .window__before { background-image: none; }
-body .window__title { 
-  text-align: center; 
-  color: #e0f7fa !important; 
-  animation: titleGlow 2s ease-in-out infinite alternate;
+#app .controls-button {
+  border-radius: 3px;
+  background: linear-gradient(145deg, #3a3a3a 0%, #454545 50%, #3a3a3a 100%);
+  color: #e0e0e0 !important;
+  border: 1px solid #4a4a4a;
+  transition: all 0.2s;
   position: relative;
-} /* Светло-голубой заголовок с анимацией */
+  overflow: hidden;
+}
+
+#app .controls-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.3s;
+}
+
+#app .controls-button:hover::before {
+  left: 100%;
+}
+
+#app .controls-button:hover {
+  background: linear-gradient(145deg, #4a4a4a 0%, #555555 50%, #4a4a4a 100%);
+  border-color: #5a5a5a;
+}
+
+/* ---------- Modals ---------- */
+#app .modal-container-wrapper {
+  background: linear-gradient(145deg, #2a2a2a 0%, #353535 25%, #2a2a2a 50%, #303030 100%);
+  border: 1px solid #404040;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  color: #e0e0e0 !important;
+  position: relative;
+}
+
+#app .modal-container-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+#app .modal-overlay {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ---------- Windows ---------- */
+body .window__title {
+  text-align: center;
+  color: #e0e0e0 !important;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 0.5vh;
+}
+
 body .window__title::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #e0f7fa, transparent);
-  opacity: 0.5;
-}
-@keyframes titleGlow {
-  from { text-shadow: 0 0 0px #e0f7fa; }
-  to { text-shadow: 0 0 0px #e0f7fa, 0 0 0px #e0f7fa; }
-}
-body .window-table__item {
-  color: #e0f7fa !important; /* Светло-голубой текст */
-  border-radius: 2vh;
-  border: .09vh solid transparent;
-  transition: .25s;
-  background: linear-gradient(145deg, rgba(33, 150, 243, 0.3), rgba(25, 118, 210, 0.3), rgba(33, 150, 243, 0.3)) !important; /* Зимний синий градиент */
-  animation: itemFloat 6s ease-in-out infinite;
-  box-shadow: none !important;
-}
-@keyframes itemFloat {
-  0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(-2px); }
-  50% { transform: translateY(0); }
-  75% { transform: translateY(2px); }
-}
-body .window-table__item.selected {
-  background: linear-gradient(145deg, #e0f7fa, #2196f3, #e0f7fa) !important; /* Зимний голубо-синий градиент */
-  color: #000000 !important; /* Черный текст */
-  border: .09vh solid rgba(224, 247, 250, 0.5);
-  animation: selectedItemGlow 1.5s ease-in-out infinite alternate;
-  box-shadow: none !important;
-}
-@keyframes selectedItemGlow {
-  from { box-shadow: none; }
-  to { box-shadow: none; }
-}
-body .window-table__item:hover { 
-  background: linear-gradient(145deg, rgba(129, 212, 250, 0.4), rgba(25, 118, 210, 0.4), rgba(129, 212, 250, 0.4)) !important; /* Светло-синий градиент */
-  transform: scale(1.02);
-  animation: itemHoverGlow 0.5s ease-in-out infinite alternate;
-  box-shadow: none !important;
-} /* Светлее при наведении для контраста */
-@keyframes itemHoverGlow {
-  from { box-shadow: none; }
-  to { box-shadow: none; }
-}
-body .window-button {
-  border-radius: 2vh;
-  color: #e0f7fa !important; /* Светло-голубой текст */
-  background: linear-gradient(145deg, rgba(33, 150, 243, 0.4), rgba(25, 118, 210, 0.4), rgba(33, 150, 243, 0.4)) !important; /* Зимний синий градиент */
-  border: 1px solid rgba(224, 247, 250, 0.2);
-  transition: all 0.3s ease;
-  box-shadow: none !important;
-}
-#app .window-button:hover {
-  color: #000000 !important; /* Черный текст */
-  background: linear-gradient(145deg, #e0f7fa, #1976d2, #e0f7fa) !important; /* Зимний голубо-синий градиент */
-  border-color: rgba(224, 247, 250, 0.5);
-  transform: translateY(-2px);
-  animation: buttonHoverGlowWindow 0.5s ease-in-out infinite alternate;
-  box-shadow: none !important;
-}
-@keyframes buttonHoverGlowWindow {
-  from { box-shadow: none; }
-  to { box-shadow: none; }
+  background: linear-gradient(90deg, transparent, #555555, transparent);
+  opacity: 0.6;
 }
 
-/* ---------- Инвентарь ---------- */
-#app .inventory { background: none; }
+body .window-table__item {
+  color: #e0e0e0 !important;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  background: linear-gradient(145deg, #303030 0%, #383838 50%, #303030 100%);
+  margin-bottom: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+body .window-table__item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+  transition: left 0.3s;
+}
+
+body .window-table__item:hover::before {
+  left: 100%;
+}
+
+body .window-table__item.selected {
+  background: linear-gradient(145deg, #3a3a3a 0%, #454545 50%, #3a3a3a 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid #555555;
+}
+
+body .window-table__item:hover {
+  background: linear-gradient(145deg, #383838 0%, #404040 50%, #383838 100%);
+  border-color: #454545;
+}
+
+body .window-button {
+  border-radius: 3px;
+  color: #e0e0e0 !important;
+  background: linear-gradient(145deg, #3a3a3a 0%, #454545 50%, #3a3a3a 100%);
+  border: 1px solid #4a4a4a;
+  transition: all 0.2s;
+  padding: 0.5vh 1vh;
+  position: relative;
+  overflow: hidden;
+}
+
+body .window-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.3s;
+}
+
+#app .window-button:hover::before {
+  left: 100%;
+}
+
+#app .window-button:hover {
+  color: #ffffff !important;
+  background: linear-gradient(145deg, #4a4a4a 0%, #555555 50%, #4a4a4a 100%);
+  border-color: #5aa0f2;
+}
+
+/* ---------- Inventory ---------- */
 #app .inventory-container__info__container,
 #app .inventory-extra__container,
 #app .inventory-main,
 #app .inventory-action__modal {
-  background: linear-gradient(145deg, #2196f3, #1976d2, #0d47a1) !important; /* Зимний синий градиент */
-  border-radius: 1.1vh;
+  background: linear-gradient(145deg, #2a2a2a 0%, #353535 25%, #2a2a2a 50%, #303030 100%);
+  border-radius: 4px;
   padding: 2vh;
-  color: #e0f7fa !important; /* Светло-голубой текст */
-  animation: inventoryFloat 5s ease-in-out infinite;
-  box-shadow: none !important;
+  color: #e0e0e0 !important;
+  border: 1px solid #404040;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
-@keyframes inventoryFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+
+#app .inventory-container__info__container::before,
+#app .inventory-extra__container::before,
+#app .inventory-main::before,
+#app .inventory-action__modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+  pointer-events: none;
+  border-radius: 4px;
 }
-#app .inventory-main__after,
-#app .inventory-main__before { display: none; }
-#app .inventory-player { border: none; }
-#app .inventory-extra { margin-bottom: 0; margin-left: 1vh; }
-#app .inventory__container,
-#app .inventory__controls { justify-content: center; }
 
 #app .inventory-capacity,
 #app .inventory-container__box,
 #app .inventory-container__slot {
-  border-radius: 1vh;
-  border: .1vh solid rgba(224, 247, 250, 0.2); /* Светло-голубая граница */
-  background: radial-gradient(circle at center, rgba(33, 150, 243, 0.6), rgba(25, 118, 210, 0.6) 150%); /* Зимний синий градиент */
-  transition: all 0.3s ease;
-  box-shadow: none !important;
+  border-radius: 2px;
+  border: 1px solid #404040;
+  background: linear-gradient(145deg, #303030 0%, #353535 50%, #303030 100%);
+  transition: all 0.2s;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
 }
+
+#app .inventory-container__slot::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.02), transparent);
+  transition: left 0.3s;
+}
+
+#app .inventory-container__slot:hover::before {
+  left: 100%;
+}
+
 #app .inventory-container__slot:hover {
-  border-color: rgba(224, 247, 250, 0.5);
-  box-shadow: none !important;
-  animation: slotHoverGlow 0.5s ease-in-out infinite alternate;
-}
-@keyframes slotHoverGlow {
-  from { box-shadow: none; }
-  to { box-shadow: none; }
-}
-#app .inventory-container__slot:before {
-  border-radius: 1vh;
-  border: .1vh solid rgba(224, 247, 250, 0.5) !important; /* Светло-голубая граница */
-  background: radial-gradient(circle at center, rgba(33, 150, 243, 0.8), rgba(25, 118, 210, 0.8) 150%); /* Зимний синий градиент */
+  border-color: #555555;
 }
 
 #app .inventory-capacity__bar,
 #app .inventory-wear__bar {
-  background: rgba(224, 247, 250, 0.2); /* Светло-голубой фон полосы */
-  border-radius: 1vh;
-  width: 100%;
-  left: 1.5vh;
-  bottom: 1vh;
+  background: linear-gradient(145deg, #3a3a3a 0%, #404040 50%, #3a3a3a 100%);
+  border-radius: 1px;
+  width: calc(100% - 3vh);
+  height: 0.8vh;
+  margin: 0.5vh auto;
 }
+
 #app .inventory-capacity__bar__fill,
 #app .inventory-wear__bar__fill {
-  border-radius: 1vh;
-  background: linear-gradient(90deg, #e0f7fa, #81d4fa, #e0f7fa) !important; /* Светло-голубой заполнитель полосы с градиентом */
-  animation: barFillGlow 2s ease-in-out infinite alternate;
-  box-shadow: none !important;
-}
-@keyframes barFillGlow {
-  from { box-shadow: none; }
-  to { box-shadow: none; }
+  border-radius: 1px;
+  background: linear-gradient(90deg, #555555 0%, #666666 100%);
+  height: 100%;
 }
 
   #app .capture-table {
-    background: #2196f361; /* Зимний синий с прозрачностью */
-    box-shadow: 0 0 5vh 0 #1976d244; /* Зимняя тень */
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%); /* Черно-серый градиент */
+    box-shadow: 0 0 5vh 0 rgba(0, 0, 0, 0.3); /* Теневая подсветка */
     border-radius: 1vh;
     transform: scale(.9);
     padding: 1.5vh 1.8vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#app .capture-table::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+    pointer-events: none;
+    border-radius: 1vh;
 }
 
 #app .capture-table__col-kills,
 #app .capture-table__col-kills.my,
 #app .capture-table__timer {
-    background: #42a5f5; /* Светло-синий */
-    color: #fff;
+    background: linear-gradient(145deg, #4a4a4a 0%, #666666 50%, #4a4a4a 100%); /* Серый градиент */
+    color: #e0e0e0; /* Светло-серый текст */
     font-style: normal;
     font-weight: 900;
     font-size: 1.8vh;
     font-family: 'GothamPro Bold';
     border-radius: .5vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#app .capture-table__col-kills::before,
+#app .capture-table__col-kills.my::before,
+#app .capture-table__timer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.3s;
 }
 
 #app .capture-table__timer {
@@ -881,17 +974,20 @@ body .window-button {
     font-style: normal;
     font-weight: 700;
     text-transform: none;
+    color: #e0e0e0 !important; /* Светло-серый текст */
 }
 
 #app .capture-table__col-kills.my {
     margin-right: 1.3vh;
     margin-left: 0 !important;
-    background: none;
+    background: linear-gradient(145deg, #3a3a3a 0%, #555555 50%, #3a3a3a 100%) !important; /* Темно-серый градиент для своего */
+    color: #ffffff !important; /* Белый текст */
 }
 
 #app .capture-table__col-kills {
     margin-left: 1.3vh;
-    background: none;
+    background: linear-gradient(145deg, #3a3a3a 0%, #555555 50%, #3a3a3a 100%) !important; /* Темно-серый градиент */
+    color: #ffffff !important; /* Белый текст */
 }
 
 .OLD-RADMIR-green-zone__main {

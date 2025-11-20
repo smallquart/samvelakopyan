@@ -391,30 +391,46 @@ function AddHud() {
         bottom: 2.7778vh;
       }
       #app .hud-radmir-radar__map { 
-  width: 21.9vh !important; 
-  height: 20.9vh !important; 
+  width: 28.93vh !important; 
+  height: 18.59vh !important; 
   overflow: hidden; 
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  border-radius: 0; 
-  border: none !important;
-  box-shadow: 0 5px 25px rgba(139, 195, 221, 0.81); /* Ледяная тень */
+  border-radius: 100%; 
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(106, 119, 163, 0.3);
+  position: relative;
+  overflow: hidden;
 }
+
+#app .hud-radmir-radar__map::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.3) 100%);
+  pointer-events: none;
+}
+
 body #app .hud-radmir-radar__map { 
   transition: .3s 
 }
+
 #app .hud-hassle-map { 
-  width: 32vh !important; 
-  height: 32vh !important 
+  width: 35.2vh !important; 
+  height: 35.2vh !important 
 }
+
 #app .hud-radmir-radar__radar { 
-  width: 26.3vh; 
-  border-radius: 0;
-  box-shadow: none;
+  width: 28.93vh 
 }
+
 #app .hud-radmir-radar { 
-  left: 7.2vh 
+  left: 8.03vh; 
+  bottom: 4.433vh 
 }
       body .OLD-RADMIR-logo__bonus {
     background: #000000c5
